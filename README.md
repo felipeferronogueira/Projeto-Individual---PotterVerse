@@ -1,4 +1,4 @@
-<img src="https://user-images.githubusercontent.com/46379117/192358781-9ca879e4-e55e-4d0d-b876-f9a4a2ed9ae8.png" width="600px">
+<img src="https://c1.wallpaperflare.com/preview/171/841/160/harry-potter-track-nine-nine-station-universal-studios-theme-park.jpg" width="600px">
 
 _Web Data Visualization = Visualização de Dados na Web_
 
