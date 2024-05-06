@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz</title>
+  <link rel="stylesheet" href="./../css/psg.css" />
+  <link rel="stylesheet" href="./../css/estilo.css" />
+  <script src="../js/sessao.js"></script>
+  <script src="./../js/alerta.js"></script>
+</head>
+
+<body>
+  <div class="header">
+    <div class="container">
+
+      <img class="logoHeader" src="../css/img/imagens-de-oculos-harry-potter-png-1.png" alt="">
+
+      <ul class="navbar" style="width: 200px;">
+        <li>
+          <a style=" text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);" href="quiz.html">Quizzes</a>
+        </li>
+        <li>|</li>
+        <li>
+          <a style=" text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);" href="../index.html">Sair</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="quiz-containe">
+    <div class="question-container">
+      <h2 id="question" style="color: white;">Vamos fazer um quiz sobre os personagens de Harry Potter?</h2>
+      <br>
+      <img class="quiz-psg" src="../css/img/salao.jpg" alt="">
+      <br>
+      <br>
+      <br>
+      <form id="answer-form">
+        <button onclick="redirecionar()" type="button" class="next-button">Iniciar</button>
+      </form>
+      <form id="answer-form">
+        <button onclick="zerar()" type="button" class="next-button">Zerar Pontuação</button>
+      </form>
+    </div>
+    <div class="msg">
+      <h2 id="result"></h2>
+    </div>
+  </div>
+
+  <script src="psgquiz.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz</title>
+  <link rel="stylesheet" href="./../css/psg.css" />
+  <link rel="stylesheet" href="./../css/estilo.css" />
+  <script src="../js/sessao.js"></script>
+  <script src="./../js/alerta.js"></script>
+</head>
+
+<body>
+  <div class="header">
+    <div class="container">
+
+      <img class="logoHeader" src="../css/img/imagens-de-oculos-harry-potter-png-1.png" alt="">
+
+      <ul class="navbar" style="width: 200px;">
+        <li>
+          <a style=" text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);" href="personagens.html">Inicio</a>
+        </li>
+        <li>
+          <a style=" text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);" href="quiz.html">Quizzes</a>
+        </li>
+        <li>|</li>
+        <li>
+          <a style=" text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);" href="../index.html">Sair</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="quiz-container">
+    <div class="question-container">
+      <h2 id="question" style="color: white;">Quem é essa Pessoa?</h2>
+      <img class="hermione" src="../css/img/sirius.jpg" alt="">
+      <div class="seila"></div>
+      <br>
+      <form id="answer-form">
+        <div class="answer-group">
+          <button type="button" class="answer-button left-button" onclick="resposta6()">Cedrico Diggory</button>
+          <button type="button" class="answer-button right-button" onclick="resposta6()">Sirius Black</button>
+        </div>
+        <div class="answer-group">
+          <button type="button" class="answer-button left-button" onclick="resposta6()">Pedro Pettigrew</button>
+          <button type="button" class="answer-button right-button" onclick="resposta6()">Lucio Malfoy</button>
+        </div>
+      </form>
+    </div>
+    <div class="msg">
+      <h2 id="result"></h2>
+    </div>
+  </div>
+
+  <script src="psgquiz.js"></script>
+
+</body>
+
+</html>

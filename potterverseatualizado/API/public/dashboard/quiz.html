@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="./../css/estilo.css" />
+    <link rel="stylesheet" href="./../css/dashboards.css" />
+    <link rel="stylesheet" href="./../css/quiz.css" /> <!-- Link para o arquivo CSS externo -->
+    <script src="../js/sessao.js"></script>
+    <script src="./../js/alerta.js"></script>
+</head>
+
+<body>
+
+    <div class="janela">
+        <div class="header-left">
+
+            <img class="logoHeader" src="../css/img/imagens-de-oculos-harry-potter-png-1.png" alt="">
+
+            <div class="hello">
+                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+            </div>
+            <div class="btn-nav-white">
+                <a href="conteudo.html">
+                    <h3>PotterVerse</h3>
+                </a>
+            </div>
+            <div class="btn-nav-white">
+                <a href="./dashboard.html">
+                    <h3>Gráficos</h3>
+                </a>
+            </div>
+            <div class="btn-nav-white">
+                <a href="./quiz.html">
+                    <h3>Quizzes</h3>
+                </a>
+            </div>
+            <div class="btn-nav">
+                <a href="mural.html">
+                    <h3>Mural de Discussão</h3>
+                </a>
+            </div>
+            <div class="btn-logout" onclick="limparSessao()">
+                <h3>Sair</h3>
+            </div>
+        </div>
+    </div>
+
+<div class="dash-right" style="justify-items: center;">
+
+    <section id="seila">
+        <div class="container">
+            <a href="personagens.html" class="card-link">
+                <div class="cardd card1">
+                    <h2 style=" text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.982);">Personagens</h2>
+                </div>
+            </a>
+            <a href="quiz.html" class="card-link">
+                <div class="cardd card2">
+                    <h2 style=" text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.982);">Lugares</h2>
+                </div>
+            </a>
+            <a href="quiz.html" class="card-link">
+                <div class="cardd card3">
+                    <h2 style=" text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.982);">Acontecimentos</h2>
+                </div>
+            </a>
+        </div>
+    </section>
+</div>
+</body>
+
+</html>

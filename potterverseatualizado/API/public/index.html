@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>PotterVerse | Página Inicial</title>
+
+  <script src="./js/sessao.js"></script>
+
+  <link rel="stylesheet" href="./css/estilo.css">
+  <link rel="icon" href="./assets/icon/favicon2.ico">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+</head>
+
+<body>
+
+  <div class="header">
+    <div class="container">
+      <div class="logo-container">
+        <img class="logoHeader" src="./css/img/imagens-de-oculos-harry-potter-png-1.png" alt="">
+      </div>
+      <ul class="navbar">
+        <li class="agora">
+          <a style=" text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);" href="index.html">Inicio</a>
+        </li>
+        <li>|</li>
+        <li>
+          <a style=" text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);" href="login.html">Login</a>
+        </li>
+        <li>
+          <a style=" text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);" href="cadastro.html">Cadastro</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="banner" style="position: relative; background-image: url(./css/img/1303125.jpg); background-size: cover;">
+    <div class="container">
+      <p class="frase-banner">Bem-vindo ao PotterVerse<br> Onde a magia vive!</p>
+    </div>
+  </div>
+
+  <section id="sobre-nos">
+    <h1 class="titulo-sobreNos">Sobre Mim</h1>
+    <br>
+    <div class="container">
+      <div class="card nossos-valores">
+        <img src="./css/img/3.png" alt="Icone" class="card-imagem">
+        <h2>Minha Missão</h2>
+        <p>
+          Nossa missão é proporcionar uma experiência educativa envolvente
+          e enriquecedora para os fãs de Harry Potter, transmitindo conhecimentos
+          sobre o universo mágico da saga. Além disso, buscamos promover valores
+          humanos positivos, como amizade, coragem e justiça, por meio de conteúdo
+          inspirador e interativo. Queremos criar uma comunidade inclusiva e engajada,
+          onde os membros se sintam parte de algo maior e sejam incentivados a
+          praticar esses valores em suas vidas diárias.
+        </p>
+      </div>
+      <div class="card nossos-valores">
+        <img src="./css/img/2.png" alt="Icone" class="card-imagem">
+        <h2>Minha Visão</h2>
+        <p>
+          Nossa visão é ser reconhecidos como a principal plataforma educativa online
+          dedicada ao universo de Harry Potter, conectando fãs de todas as idades e
+          culturas ao redor do mundo. Buscamos ser uma referência na promoção de valores
+          positivos e na criação de uma comunidade que compartilha o amor pela saga e se
+          empenha em aplicar seus ensinamentos no mundo real. Queremos inspirar uma geração
+          de pessoas que valorizam a amizade, a coragem e a justiça em suas vidas.
+        </p>
+      </div>
+      <div class="card nossos-valores">
+        <img src="./css/img/1.png" alt="Icone" class="card-imagem estrela">
+        <h2>Meus Valores</h2>
+        <ul>
+          <li>
+            <b>Amizade</b>: A amizade é um vínculo afetivo entre pessoas baseado na confiança,
+            lealdade, empatia e apoio mútuo. É uma relação que traz alegria, suporte emocional
+            e compartilhamento de experiências.
+          </li>
+          <li>
+            <b>Coragem</b>: Coragem é a capacidade de enfrentar situações difíceis, desafios ou
+            perigos, mesmo quando se sente medo. Envolve agir com determinação e bravura para
+            alcançar objetivos, defender princípios ou ajudar os outros, mesmo diante de obstáculos.
+          </li>
+          <li>
+            <b>Justiça</b>: Justiça refere-se à igualdade de direitos, oportunidades e tratamento
+            para todas as pessoas. Envolve respeitar os direitos individuais, promover a equidade
+            e tomar decisões baseadas em critérios éticos e imparciais.
+          </li>
+        </ul>
+      </div>
+    </div>
+    <br>
+  </section>
+
+  <div class="footer">
+    <div class="container">
+      <h4>Feito com muito carinho por Felipe Ferro &hearts; SPTech &copy; 2024</h4>
+    </div>
+  </div>
+
+</body>
+
+<script>
+
+  let lastScrollTop = 0;
+  const header = document.querySelector(".header");
+
+  window.addEventListener("scroll", function () { //window é a pagina; addEventListener é uma acao que so acontece quando acontece um evento(nesse caso o scroll) e a function() é a function anonima que so opera dentro desse bloco;
+    let currentScroll = window.pageYOffset || document.documentElement.scrollTop; //window.PageYOffset é 
+    if (currentScroll > lastScrollTop) {
+      // Rolando para baixo
+      header.style.top = "-100px"; // Oculta o header devagar
+    } else {
+      // Rolando para cima
+      header.style.top = "0"; // Mostra o header devagar
+      header.style.backgroundColor = "rgba(0, 0, 0, 0.6)"; // Torna o cabeçalho branco
+      header.style.transition = "background-color 0.8s ease"; // Adiciona transição suave para a cor de fundo
+      header.style.color = "#000"
+    }
+
+    // Se o topo da página, permitindo alguma margem para variação, é alcançado, volte para transparente
+    if (currentScroll <= 10) {
+      header.style.backgroundColor = "rgba(255, 255, 255, 0)"; // Torna o cabeçalho transparente novament
+      header.style.transition = "background-color 0.8s ease"; // Adiciona transição suave para a cor de fundo
+    }
+
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Para lidar com rolagem para o topo
+  }, false);
+
+
+</script>
+
+</html>
