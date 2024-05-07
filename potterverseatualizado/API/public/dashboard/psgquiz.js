@@ -1,4 +1,6 @@
-var pontuacao = 0;
+//var pontuacao = 0; // trocar por session storage
+
+var pontuacao = sessionStorage.getItem('pontuacao') ? parseInt(sessionStorage.getItem('pontuacao')) : 0;
 
 function redirecionar() {
     window.location.href = 'psgQuest1.html';
@@ -6,6 +8,9 @@ function redirecionar() {
 
 function zerar(){
     pontuacao = 0
+
+    sessionStorage.setItem('pontuacao', pontuacao);
+    console.log('Pontuacao:' + pontuacao);
 }
 
 function resposta1(respostaSelecionada1) {
@@ -14,9 +19,14 @@ function resposta1(respostaSelecionada1) {
     if (respostaSelecionada1 == respostaCorreta) {
         pontuacao++;
     }
+    
+    sessionStorage.setItem('pontuacao', pontuacao);
+    console.log('Pontuação: ' + pontuacao);
 
-    // Redireciona para a próxima página
-    window.location.href = 'psgQuest2.html';
+    setTimeout(function() {
+        console.log("Redirecionando para a próxima página...");
+        window.location.href = 'psgQuest2.html';
+    }, 2000);
 }
 
 function resposta2(respostaSelecionada2) {
@@ -26,8 +36,13 @@ function resposta2(respostaSelecionada2) {
         pontuacao++;
     }
 
-    // Redireciona para a próxima página
-    window.location.href = 'psgQuest3.html';
+    sessionStorage.setItem('pontuacao', pontuacao);
+    console.log('Pontuação: ' + pontuacao);
+
+    setTimeout(function() {
+        console.log("Redirecionando para a próxima página...");
+        window.location.href = 'psgQuest3.html';
+    }, 2000);
 }
 
 function resposta3(respostaSelecionada3) {
@@ -37,9 +52,15 @@ function resposta3(respostaSelecionada3) {
         pontuacao++;
     }
 
-    // Redireciona para a próxima página
-    window.location.href = 'psgQuest4.html';
+    sessionStorage.setItem('pontuacao', pontuacao);
+    console.log('Pontuacao:' + pontuacao);
+
+    setTimeout(function() {
+        console.log("Redirecionando para a próxima página...");
+        window.location.href = 'psgQuest4.html';
+    }, 2000);
 }
+
 
 function resposta4(respostaSelecionada4) {
     var respostaCorreta = "Severus Snape";
@@ -48,9 +69,15 @@ function resposta4(respostaSelecionada4) {
         pontuacao++;
     }
 
-    // Redireciona para a próxima página
-    window.location.href = 'psgQuest5.html';
+    sessionStorage.setItem('pontuacao', pontuacao);
+    console.log('Pontuacao:' + pontuacao);
+
+    setTimeout(function() {
+        console.log("Redirecionando para a próxima página...");
+        window.location.href = 'psgQuest5.html';
+    }, 2000);
 }
+
 
 function resposta5(respostaSelecionada5) {
     var respostaCorreta = "Tom Riddle";
@@ -59,8 +86,13 @@ function resposta5(respostaSelecionada5) {
         pontuacao++;
     }
 
-    // Redireciona para a próxima página
-    window.location.href = 'psgQuest6.html';
+    sessionStorage.setItem('pontuacao', pontuacao);
+    console.log('Pontuacao:' + pontuacao);
+
+    setTimeout(function() {
+        console.log("Redirecionando para a próxima página...");
+        window.location.href = 'psgQuest6.html';
+    }, 2000);
 }
 
 function resposta6(respostaSelecionada6) {
@@ -70,8 +102,13 @@ function resposta6(respostaSelecionada6) {
         pontuacao++;
     }
 
-    // Redireciona para a próxima página
-    window.location.href = 'psgQuest7.html';
+    sessionStorage.setItem('pontuacao', pontuacao);
+    console.log('Pontuacao:' + pontuacao);
+
+    setTimeout(function() {
+        console.log("Redirecionando para a próxima página...");
+        window.location.href = 'psgQuest7.html';
+    }, 2000);
 }
 
 function resposta7(respostaSelecionada7) {
@@ -81,9 +118,15 @@ function resposta7(respostaSelecionada7) {
         pontuacao++;
     }
 
-    // Redireciona para a próxima página
-    window.location.href = 'psgQuest8.html';
+    sessionStorage.setItem('pontuacao', pontuacao);
+    console.log('Pontuacao:' + pontuacao);
+
+    setTimeout(function() {
+        console.log("Redirecionando para a próxima página...");
+        window.location.href = 'psgQuest8.html';
+    }, 2000);
 }
+
 
 function resposta8(respostaSelecionada8) {
     var respostaCorreta = "Cedrico Diggory";
@@ -92,8 +135,13 @@ function resposta8(respostaSelecionada8) {
         pontuacao++;
     }
 
-    // Redireciona para a próxima página
-    window.location.href = 'psgQuest9.html';
+    sessionStorage.setItem('pontuacao', pontuacao);
+    console.log('Pontuacao:' + pontuacao);
+
+    setTimeout(function() {
+        console.log("Redirecionando para a próxima página...");
+        window.location.href = 'psgQuest9.html';
+    }, 2000);
 }
 
 function resposta9(respostaSelecionada9) {
@@ -103,24 +151,37 @@ function resposta9(respostaSelecionada9) {
         pontuacao++;
     }
 
-    // Redireciona para a próxima página
-    window.location.href = 'psgQuest10.html';
+    sessionStorage.setItem('pontuacao', pontuacao);
+    console.log('Pontuacao:' + pontuacao);
+
+    setTimeout(function() {
+        console.log("Redirecionando para a próxima página...");
+        window.location.href = 'psgQuest10.html';
+    }, 2000);
 }
 
 
 
 function resposta10(respostaSelecionada10) {
-    var respostaCorreta = "Alastor Moody";
+    var respostaCorreta = "Alastor Moody";  
 
     if (respostaSelecionada10 == respostaCorreta) {
         pontuacao++;
     }
 
-    // Redireciona para a próxima página
-    window.location.href = 'sla.html';
+    sessionStorage.setItem('pontuacao', pontuacao);
+    console.log('Pontuacao:' + pontuacao);
+
+    setTimeout(function() {
+        console.log("Redirecionando para a próxima página...");
+        window.location.href = 'sla.html';
+    }, 2000);
 }
 
+
 function sla(){
+
+    sessionStorage.setItem('pontuacao', pontuacao);
     msg.innerHTML = `Pontuacao ${pontuacao}`;
 }
 
