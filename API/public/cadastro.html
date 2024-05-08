@@ -20,7 +20,7 @@
   <div class="header">
     <div class="container">
       <div class="logo-container">
-       <img class="logoHeader" src="./css/img/imagens-de-oculos-harry-potter-png-1.png" alt="">
+        <img class="logoHeader" src="./css/img/imagens-de-oculos-harry-potter-png-1.png" alt="">
       </div>
       <div class="menu-toggle" id="mobile-menu">
         <span class="bar"></span>
@@ -44,77 +44,76 @@
   <!--header fim-->
 
   <div class="login">
-    <div class="banner">
       <div class="alerta_erro">
         <div class="card_erro" style="justify-content: center; align-items: center;" id="cardErro">
           <span id="mensagem_erro"></span>
         </div>
       </div>
-    <div class="container">
-      <div class="card card-cadastro">
-        <h2>Bem-vindo!</h2>
-        <br>
-        <div class="formulario">
-          <!--
+      <div class="container">
+        <div class="card card-cadastro">
+          <h2>Bem-vindo!</h2>
+          <br>
+          <div class="formulario">
+            <!--
                          Para inserir mais um campo, copie uma das inputs abaixo.
                          Assim que inserir vá para o script abaixo.
                      -->
-          <div class="campo">
-            <span>Qual sua casa em Hogwarts? </span>
-            <select name="casas" id="select_casa">
-              <option value="#" selected disabled>Selecione uma casa</option>
-              <option value="1">Grifininoria</option>
-              <option value="2">Sonserina</option>
-              <option value="3">Corvinal</option>
-              <option value="4">Lufa-Lufa</option>
-            </select>
+            <div class="campo">
+              <span>Qual sua casa em Hogwarts? </span>
+              <select name="casas" id="select_casa">
+                <option value="#" selected disabled>Selecione uma casa</option>
+                <option value="1">Grifininoria</option>
+                <option value="2">Sonserina</option>
+                <option value="3">Corvinal</option>
+                <option value="4">Lufa-Lufa</option>
+              </select>
+            </div>
+            <div class="campo">
+              <span>Nome:</span>
+              <input id="nome_input" type="text" placeholder="Seu nome" />
+            </div>
+            <div class="campo">
+              <span>CPF:</span>
+              <input id="cpf_input" type="text" placeholder="Seu CPF" />
+            </div>
+            <div class="campo">
+              <span>E-mail:</span>
+              <input id="email_input" type="text" placeholder="meuemail@provedor.com" />
+            </div>
+            <div class="campo">
+              <span>Senha:</span>
+              <input id="senha_input" type="password" placeholder="******" />
+            </div>
+            <div class="campo">
+              <span>Confirmação da Senha:</span>
+              <input id="confirmacao_senha_input" type="password" placeholder="******" />
+            </div>
+            <button class="botao" onclick="cadastrar()">Cadastrar</button>
           </div>
-          <div class="campo">
-            <span>Nome:</span>
-            <input id="nome_input" type="text" placeholder="Seu nome" /> 
+          <div id="div_aguardar" class="loading-div">
+            <img src="./assets/aguarde-orange.gif" id="loading-gif" />
           </div>
-          <div class="campo">
-            <span>CPF:</span>
-            <input id="cpf_input" type="text" placeholder="Seu CPF" />
-          </div>
-          <div class="campo">
-            <span>E-mail:</span>
-            <input id="email_input" type="text" placeholder="meuemail@provedor.com" />
-          </div>
-          <div class="campo">
-            <span>Senha:</span>
-            <input id="senha_input" type="password" placeholder="******" />
-          </div>
-          <div class="campo">
-            <span>Confirmação da Senha:</span>
-            <input id="confirmacao_senha_input" type="password" placeholder="******" /> 
-          </div>
-          <button class="botao" onclick="cadastrar()">Cadastrar</button>
-        </div>
-        <div id="div_aguardar" class="loading-div">
-          <img src="./assets/circle-loading.gif" id="loading-gif" />
-        </div>
 
-        <div id="div_erros_login"></div>
+          <div id="div_erros_login"></div>
+        </div>
       </div>
-    </div>
-  
 
 
-  <!--footer inicio-->
-  <div class="footer">
-    <div class="container">
-      <h4>Feito com muito carinho por Felipe Ferro &hearts; SPTech &copy; 2024</h4>
-    </div>
-  </div>
-  <!--footer fim-->
+
+      <!--footer inicio-->
+      <div class="footer">
+        <div class="container">
+          <h4>Feito com muito carinho por Felipe Ferro &hearts; SPTech &copy; 2024</h4>
+        </div>
+      </div>
+      <!--footer fim-->
 </body>
 
 </html>
 
 <script>
   function cadastrar() {
-    
+
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
     var nomeVar = nome_input.value;
@@ -217,4 +216,30 @@
   function sumirMensagem() {
     cardErro.style.display = "none";
   }
+
+
+  let lastScrollTop = 0;
+  const header = document.querySelector(".header");
+
+  window.addEventListener("scroll", function () { //window é a pagina; addEventListener é uma acao que so acontece quando acontece um evento(nesse caso o scroll) e a function() é a function anonima que so opera dentro desse bloco;
+    let currentScroll = window.pageYOffset || document.documentElement.scrollTop; //window.PageYOffset é 
+    if (currentScroll > lastScrollTop) {
+      // Rolando para baixo
+      header.style.top = "-100px"; // Oculta o header devagar
+    } else {
+      // Rolando para cima
+      header.style.top = "0"; // Mostra o header devagar
+      header.style.backgroundColor = "rgba(0, 0, 0, 0.6)"; // Torna o cabeçalho branco
+      header.style.transition = "background-color 0.8s ease"; // Adiciona transição suave para a cor de fundo
+      header.style.color = "#000"
+    }
+
+    // Se o topo da página, permitindo alguma margem para variação, é alcançado, volte para transparente
+    if (currentScroll <= 10) {
+      header.style.backgroundColor = "rgba(255, 255, 255, 0)"; // Torna o cabeçalho transparente novament
+      header.style.transition = "background-color 0.8s ease"; // Adiciona transição suave para a cor de fundo
+    }
+
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Para lidar com rolagem para o topo
+  }, false);
 </script>

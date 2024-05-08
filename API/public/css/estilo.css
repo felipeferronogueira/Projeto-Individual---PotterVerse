@@ -6,6 +6,8 @@ body {
   font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: black;
   min-height: 100vh; /* Garante que o corpo ocupe pelo menos a altura da viewport */
+  background-image: url(./img/1303125.jpg); 
+  background-size: cover;
 }
 
 :root {
@@ -146,7 +148,7 @@ body {
 #sobre-nos .container .card {
   width: 40%;
   margin-bottom: 20px;
-  height: 450px;
+  height: 100%;
   background-color: #fff;
   box-shadow: 0px 0px 19px 7px rgba(0,0,0,0.75);
   padding: 20px;
@@ -155,18 +157,18 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: auto;
+  overflow: auto; /* Adicionar isso */
   text-align: center;
 }
 
 .card-imagem{
   width: 80%;
   height: 60%;
+  
 }
 
 #sobre-nos .container .nossos-valores{
   text-align: start;
-  width: 400px;
 }
 
 #sobre-nos .container h2 {
@@ -188,7 +190,6 @@ body {
 }
 
 #sobre-nos .container ul {
-  margin-left: 20px;
   margin-bottom: 20px;
 }
 
@@ -254,9 +255,7 @@ body {
 /* LOGIN */
 
 .login {
-  height: var(--tamanho-login);
-  background-image: url('../assets/imgs/bg-jelly-fish-para-home.png');
-  background-size: cover;
+  height: 121vh;
 }
 
 .login .container {
@@ -267,6 +266,7 @@ body {
 
 .card {
   width: 50%;
+  height: 300px;
   background-color: #fdfbdd7a;
   border-radius: 10px;
   display: flex;
@@ -277,6 +277,7 @@ body {
   height: fit-content;
   padding: 20px 0;
 }
+
 
 .card h2 {
   margin: 0;
