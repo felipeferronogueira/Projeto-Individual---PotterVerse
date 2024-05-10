@@ -353,7 +353,6 @@ canvas {
 .dash-right {
   display: flex;
   width: 70%;
-  height: 100vh;
   background-color: transparent;
   position: relative;
   top: 0;
@@ -421,7 +420,7 @@ canvas {
 
 .btn-logout {
   width: 40%;
-  height: 8%;
+  height: 8.5%;
   background-color: #32b9cd;
   color: white;
   border-radius: 10px;
