@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz</title>
+  <link rel="stylesheet" href="./../css/psg.css" />
+  <link rel="stylesheet" href="./../css/estilo.css" />
+  <script src="../js/sessao.js"></script>
+  <script src="./../js/alerta.js"></script>
+</head>
+
+<body>
+  <div class="header">
+    <div class="container">
+      <img class="logoHeader" src="../css/img/imagens-de-oculos-harry-potter-png-1.png" alt="">
+      <ul class="navbar" style="width: 200px;">
+        <li>
+          <a style=" text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);" href="personagens.html">Inicio</a>
+        </li>
+        <li>
+          <a style=" text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);" href="quiz.html">Quizzes</a>
+        </li>
+        <li>|</li>
+        <li>
+          <a style=" text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);" href="../index.html">Sair</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="quiz-container" id="quiz">
+    <div class="question-container">
+      <h2 id="question" style="color: white;">Quem é essa Pessoa?</h2>
+      <img class="hermione" src="../css/img/hermione.jpg" alt="">
+      <div class="seila"></div>
+      <br>
+      <form id="answer-form">
+        <div class="answer-group">
+          <button type="button" class="answer-button left-button" onclick="resposta1('Harry Potter')">Harry Potter</button>
+          <button type="button" class="answer-button right-button" onclick="resposta1('Rúbeo Hagrid')">Rúbeo Hagrid</button>
+        </div>
+        <div class="answer-group">
+          <button type="button" class="answer-button left-button" onclick="resposta1('Hermione Granger')">Hermione Granger</button>
+          <button type="button" class="answer-button right-button" onclick="resposta1('Ron Weasley')">Ron Weasley</button>
+        </div>
+      </form>
+    </div>
+    <div class="msg">
+      <h2 id="result"></h2>
+    </div>
+  </div>
+
+</body>
+
+</html>
+
+<script>
+
+var pontuacao = 0; 
+
+var questoes = [
+  {
+    enunciado:"Quem é essa pessoa?",
+    imagem:"../css/img/luna.jpg",
+    alternativas:[
+      {
+        titulo:"Simas Finnigan",
+      },
+      {
+        titulo:"Neville Longbottom",
+      },
+      {
+        titulo:"Draco Malfoy",
+      },
+      {
+        titulo:"Luna Lovegood",
+      }
+    ]
+    [
+      {
+        titulo:"Draco Malfoy",
+      },
+      {
+        titulo:"Severus Snape",
+      },
+      {
+        titulo:"Bellatrix Lestrange",
+      },
+      {
+        titulo:"Tom Riddle",
+      }
+    ]
+  }
+]
+
+function resposta1(respostaSelecionada1){
+  var respostaCorreta1 = "Hermione Granger";
+
+   if (respostaSelecionada1 == respostaCorreta1) {
+        pontuacao++;
+  }
+
+  console.log('Pontuação: ' + pontuacao);
+  
+  quiz.innerHTML=`
+  
+  <div class="question-container">
+      <h2 id="question" style="color: white;">Quem é essa Pessoa?</h2>
+      <img class="luna" src="../css/img/luna.jpg" alt="">
+      <div class="seila"></div>
+      <br>
+      <form id="answer-form">
+        <div class="answer-group">
+          <button type="button" class="answer-button left-button" onclick="resposta2('Simas Finnigan')">Simas Finnigan</button>
+          <button type="button" class="answer-button right-button" onclick="resposta2('Neville Longbottom')">Neville Longbottom</button>
+        </div>
+        <div class="answer-group">
+          <button type="button" class="answer-button left-button" onclick="resposta2('Draco Malfoy')">Draco Malfoy</button>
+          <button type="button" class="answer-button right-button" onclick="resposta2('Luna Lovegood')">Luna Lovegood</button>
+        </div>
+      </form>
+    </div>
+  `
+}
+
+function resposta2(respostaSelecionada2) {
+    var respostaCorreta = "Luna Lovegood";
+
+    if (respostaSelecionada2 == respostaCorreta) {
+        pontuacao++;
+    }
+
+    console.log('Pontuação: ' + pontuacao);
+
+    quiz.innerHTML = `<div class="question-container">
+      <h2 id="question" style="color: white;">Quem é essa Pessoa?</h2>
+      <img class="draco" src="../css/img/draco.jpg" alt="">
+      <div class="seila"></div>
+      <br>
+      <form id="answer-form">
+        <div class="answer-group">
+          <button type="button" class="answer-button left-button" onclick="resposta3('Draco Malfoy')">Draco Malfoy</button>
+          <button type="button" class="answer-button right-button" onclick="resposta3('Severus Snape')">Severus Snape</button>
+        </div>
+        <div class="answer-group">
+          <button type="button" class="answer-button left-button" onclick="resposta3('Bellatrix Lestrange')">Bellatrix Lestrange</button>
+          <button type="button" class="answer-button right-button" onclick="resposta3('Tom Riddle')">Tom Riddle</button>
+        </div>
+      </form>`
+}
+
+</script>
