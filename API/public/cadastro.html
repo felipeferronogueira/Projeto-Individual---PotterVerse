@@ -151,7 +151,7 @@
       mensagem_erro.innerHTML += ` O CPF deve conter 11 digitos <br>`;
       finalizarAguardar();
       return false;
-    } else if (indice_arroba < 0 && indice_ponto < 0) {
+    } else if (indice_arroba < 1 && indice_ponto < 1) {
       cardErro.style.display = 'Block'
       mensagem_erro.innerHTML += `O email deve conter no minimo 1 '@ 'e 1 '.'<br>`;
       finalizarAguardar();

@@ -1,8 +1,6 @@
-//var pontuacao = 0; // trocar por session storage
-
 var pontuacao = sessionStorage.getItem('pontuacao') ? parseInt(sessionStorage.getItem('pontuacao')) : 0;
 
-function redirecionar() {
+function redirecionar() {   
     window.location.href = 'psgQuest1.html';
 }
 
@@ -26,7 +24,7 @@ function resposta1(respostaSelecionada1) {
     setTimeout(function() {
         console.log("Redirecionando para a próxima página...");
         window.location.href = 'psgQuest2.html';
-    }, 2000);
+    }, 750);
 }
 
 function resposta2(respostaSelecionada2) {
@@ -42,7 +40,7 @@ function resposta2(respostaSelecionada2) {
     setTimeout(function() {
         console.log("Redirecionando para a próxima página...");
         window.location.href = 'psgQuest3.html';
-    }, 2000);
+    }, 750);
 }
 
 function resposta3(respostaSelecionada3) {
@@ -58,7 +56,7 @@ function resposta3(respostaSelecionada3) {
     setTimeout(function() {
         console.log("Redirecionando para a próxima página...");
         window.location.href = 'psgQuest4.html';
-    }, 2000);
+    }, 750);
 }
 
 
@@ -75,7 +73,7 @@ function resposta4(respostaSelecionada4) {
     setTimeout(function() {
         console.log("Redirecionando para a próxima página...");
         window.location.href = 'psgQuest5.html';
-    }, 2000);
+    }, 750);
 }
 
 
@@ -92,7 +90,7 @@ function resposta5(respostaSelecionada5) {
     setTimeout(function() {
         console.log("Redirecionando para a próxima página...");
         window.location.href = 'psgQuest6.html';
-    }, 2000);
+    }, 750);
 }
 
 function resposta6(respostaSelecionada6) {
@@ -108,7 +106,7 @@ function resposta6(respostaSelecionada6) {
     setTimeout(function() {
         console.log("Redirecionando para a próxima página...");
         window.location.href = 'psgQuest7.html';
-    }, 2000);
+    }, 750);
 }
 
 function resposta7(respostaSelecionada7) {
@@ -124,7 +122,7 @@ function resposta7(respostaSelecionada7) {
     setTimeout(function() {
         console.log("Redirecionando para a próxima página...");
         window.location.href = 'psgQuest8.html';
-    }, 2000);
+    }, 750);
 }
 
 
@@ -141,7 +139,7 @@ function resposta8(respostaSelecionada8) {
     setTimeout(function() {
         console.log("Redirecionando para a próxima página...");
         window.location.href = 'psgQuest9.html';
-    }, 2000);
+    }, 750);
 }
 
 function resposta9(respostaSelecionada9) {
@@ -157,7 +155,7 @@ function resposta9(respostaSelecionada9) {
     setTimeout(function() {
         console.log("Redirecionando para a próxima página...");
         window.location.href = 'psgQuest10.html';
-    }, 2000);
+    }, 750);
 }
 
 
@@ -171,17 +169,43 @@ function resposta10(respostaSelecionada10) {
 
     sessionStorage.setItem('pontuacao', pontuacao);
     console.log('Pontuacao:' + pontuacao);
+    
 
     setTimeout(function() {
         console.log("Redirecionando para a próxima página...");
-        window.location.href = 'sla.html';
-    }, 2000);
+        window.location.href = 'pontuacao.html';
+    }, 750);
+
 }
 
 
-function sla(){
-
+function registrarPersonagens(){
     sessionStorage.setItem('pontuacao', pontuacao);
+
+    var qtdAcertosVar = pontuacao;
+    var fkQuizVar = 1;
+    var fkUsuarioVar = sessionStorage.ID_USUARIO;
+
+    fetch("/usuarios/registrarPersonagens", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+          qtdAcertosServer: qtdAcertosVar,
+          fkQuizServer: fkQuizVar,
+          fkUsuarioServer: fkUsuarioVar
+        }),
+      }); 
+
     msg.innerHTML = `Pontuacao ${pontuacao}`;
+
 }
 
+// var respCorreta = {
+//     alternativas: ['a', 'b', 'c', 'd'],
+//     respCorreta: 'c'
+// }
+// var alts = ['d']
