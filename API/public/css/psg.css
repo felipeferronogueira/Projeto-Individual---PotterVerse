@@ -9,6 +9,7 @@ body {
     background-image: url(../css/img/5aab18d5d3ba0f96c7091cc4cc3aae3d.jpg);
     background-size: cover;
     font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: auto;
 }
 
 :root {
@@ -113,7 +114,7 @@ body {
     max-width: 800px;
     margin: 0 auto;
     background-color: rgba(0, 0, 0, 0.697);
-    padding: 40px;
+    padding: 20px;
     border-radius: 15px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     text-align: center;

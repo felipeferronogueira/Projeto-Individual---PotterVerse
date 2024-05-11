@@ -19,11 +19,9 @@
         rel="stylesheet">
 </head>
 
-<body onload="validarSessao(), atualizarFeed()">
+<body>
 
     <div class="janela">
-
-
         <div class="header-left">
 
             <img class="logoHeader" src="../css/img/imagens-de-oculos-harry-potter-png-1.png" alt="">
@@ -31,36 +29,65 @@
             <div class="hello">
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
             </div>
+            <button class="btnn" type="button" onclick="redirecionarConteudo()">
+                <strong>PotterVerse</strong>
+                <div id="container-stars">
+                  <div id="stars"></div>
+                </div>
+              
+                <div id="glow">
+                  <div class="circle"></div>
+                  <div class="circle"></div>
+                </div>
+              </button>
+              <button class="btnn" type="button" onclick="redirecionarDash()">
+                <strong>DashBoard</strong>
+                <div id="container-stars">
+                  <div id="stars"></div>
+                </div>
+              
+                <div id="glow">
+                  <div class="circle"></div>
+                  <div class="circle"></div>
+                </div>
+              </button>
+              <button class="btnn" type="button" onclick="redirecionarQuiz()">
+                <strong>Quizzes</strong>
+                <div id="container-stars">
+                  <div id="stars"></div>
+                </div>
+              
+                <div id="glow">
+                  <div class="circle"></div>
+                  <div class="circle"></div>
+                </div>
+              </button>
 
+              <button class="btnn" type="button" onclick="redirecionarMural()">
+                
+                <strong>Mural de Discussão</strong>
+                <div id="container-stars">
+                  <div id="stars"></div>
+                </div>
+              
+                <div id="glow">
+                  <div class="circle"></div>
+                  <div class="circle"></div>
+                </div>
+              </button>
 
-            <div class="btn-nav-white">
-                <a href="conteudo.html">
-                    <h3>PotterVerse</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./dashboard.html">
-                    <h3>Gráficos</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./quiz.html">
-                    <h3>Quizzes</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav">
-                <a href="mural.html">
-                <h3>Mural de Discussão</h3>
-                </a>
-            </div>
-
-            <div class="btn-logout" onclick="limparSessao()">
-                <h3>Sair</h3>
-            </div>
-
+            
+              <button class="btnn" type="button" onclick="limparSessao()" >
+                <strong>Sair</strong>
+                <div id="container-stars">
+                  <div id="stars"></div>
+                </div>
+                <div id="glow">
+                  <div class="circle"></div>
+                  <div class="circle"></div>
+                </div>
+              </button>
+            
         </div>
     </div>
 
@@ -82,7 +109,7 @@
                         <br>
                         <br>
                         <label>
-                            Descrição (máximo de 250 caracteres):
+                            Descrição:
                             <br>
                             <textarea name="descricao" id="textarea_descricao" maxlength="250" rows="5"></textarea>
                         </label>
@@ -252,6 +279,22 @@
             console.error(resposta);
             finalizarAguardar();
         });
+    }
+
+    function redirecionarMural(){
+        window.location.href = "mural.html"
+    }
+
+    function redirecionarQuiz(){
+        window.location.href = "quiz.html"
+    }
+
+    function redirecionarDash(){
+        window.location.href = "dashboard.html"
+    }
+
+    function redirecionarConteudo(){
+        window.location.href = "conteudo.html"
     }
 
 </script>
