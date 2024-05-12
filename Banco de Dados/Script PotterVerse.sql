@@ -39,3 +39,25 @@ CREATE TABLE aviso (
 );
 
 select * from aviso;
+
+create table quiz(
+idQuiz int primary key,
+nome varchar(45),
+qtdQuestao int);
+
+insert into quiz values 
+(1, 'Quiz de Personagem', 10),
+(2, 'Quiz de Lugares', 10),
+(3, 'Quiz de Acontecimentos', 10);
+
+create table pontuacao(
+idPontuacao int auto_increment,
+qtdAcertos int,
+fkQuiz int,
+foreign key (fkQuiz) references quiz(idQuiz),
+fkUsuario int,
+foreign key (fkUsuario) references usuario(id),
+primary key (idPontuacao, fkQuiz, fkUsuario)
+);
+
+select * from pontuacao join usuario on fkUsuario = id order by qtdAcertos desc;
