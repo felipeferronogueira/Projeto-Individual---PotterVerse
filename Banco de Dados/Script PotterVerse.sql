@@ -26,7 +26,7 @@ insert into casaHogwarts values
 (default , 'Grifinoria'),
 (default , 'Sonserina'),
 (default , 'Corvinal'),
-(default , 'lufa-Lufa');
+(default , 'Lufa-Lufa');
 
 select * from casaHogwarts;
 

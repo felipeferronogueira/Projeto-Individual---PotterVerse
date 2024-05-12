@@ -562,7 +562,7 @@ input {
 }
 
 .card1 {
-  background-image: url(../css/img/5fe9bb06f7769a25b5de016780483721.jpg);
+  background-image: url(./img/harri\ potti.jpg);
   background-size: cover;
 }
 
@@ -637,11 +637,6 @@ strong {
   text-shadow: 0 0 4px white;
 }
 
-/* #glow {
-  position: absolute;
-  display: flex;
-  width: 12rem;
-} */
 
 .circle {
   width: 100%;
