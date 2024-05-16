@@ -120,8 +120,6 @@ body {
 .bann {
   text-align: center;
   padding: 20px;
-  background-image: url(./img/beaty.jpg);
-  background-size: cover;
 }
 
 
@@ -196,7 +194,7 @@ body {
 /* MISSÃO VISÃO VALORES */
 
 #sobre-nos{
-  background-image: url(./img/1299476.png); 
+  background-image: url(./img/beaty.jpg);
   background-size: cover;
 }
 
