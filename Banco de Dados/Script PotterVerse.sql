@@ -5,7 +5,7 @@ use potterverse;
 CREATE TABLE casaHogwarts (
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	casa varchar(15),
-    constraint chkCasa check (casa in ('Sonserina','Grifinoria','Corvinal','Lufa-Lufa'))
+  constraint chkCasa check (casa in ('Sonserina','Grifinoria','Corvinal','Lufa-Lufa'))
 );
 
 CREATE TABLE usuario (

@@ -17,74 +17,73 @@
 
 <body style="background-image: url(./css/img/1303125\ -\ Copia.jpg); background-size: cover;"></body>
 
-    <div class="header">
-        <div class="container">
-          <div class="logo-container">
-           <img class="logoHeader" src="./css/img/imagens-de-oculos-harry-potter-png-1.png" alt="">
-          </div>
-          <div class="menu-toggle" id="mobile-menu">
+<div class="header">
+    <div class="container">
+        <div class="logo-container">
+            <img class="logoHeader" src="./css/img/imagens-de-oculos-harry-potter-png-1.png" alt="">
+        </div>
+        <div class="menu-toggle" id="mobile-menu">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
-          </div>
-          <ul class="navbar">
+        </div>
+        <ul class="navbar">
             <li>
-              <a style=" text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);" href="index.html">Inicial</a>
+                <a style=" text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);" href="index.html">Inicial</a>
             </li>
             <li>|</li>
             <li class="agora">
-              <a style=" text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);" href="login.html">Login</a>
+                <a style=" text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);" href="login.html">Login</a>
             </li>
             <li>
-              <a style=" text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);" href="cadastro.html">Cadastro</a>
+                <a style=" text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);" href="cadastro.html">Cadastro</a>
             </li>
-          </ul>
-        </div>
-      </div>
+        </ul>
+    </div>
+</div>
 
 
-    <div class="login" style="height: 100vh;">
-        <div class="alerta_erro">
-            <div class="card_erro" id="cardErro">
-                <span id="mensagem_erro"></span>
-            </div>
-        </div>
-        <div class="container">
-            <div class="card card-login">
-                <h2>Olá de volta!</h2>
-                <div class="formulario">
-                    <div class="campo">
-                        <span>E-mail:</span>
-                        <input id="email_input" type="text" placeholder="Login" >
-                    </div>
-                    <div class="campo">
-                        <span>Senha:</span>
-                        <input id="senha_input" type="password" placeholder="******">
-                    </div>
-                    <button class="botao" onclick="entrar()">Entrar</button>
-                </div>
-
-                <div id="div_aguardar" class="loading-div">
-                    <img src="./assets/circle-loading.gif" id="loading-gif">
-                </div>
-
-                <div id="div_erros_login"></div>
-            </div>
+<div class="login" style="height: 100vh;">
+    <div class="alerta_erro">
+        <div class="card_erro" id="cardErro">
+            <span id="mensagem_erro"></span>
         </div>
     </div>
+    <div class="container">
+        <div class="card card-login">
+            <h2>Olá de volta!</h2>
+            <div class="formulario">
+                <div class="campo">
+                    <span>E-mail:</span>
+                    <input id="email_input" type="text" placeholder="Login">
+                </div>
+                <div class="campo">
+                    <span>Senha:</span>
+                    <input id="senha_input" type="password" placeholder="******">
+                </div>
+                <button class="botao" onclick="entrar()">Entrar</button>
+            </div>
 
+            <div id="div_aguardar" class="loading-div">
+                <img src="./assets/circle-loading.gif" id="loading-gif">
+            </div>
 
-    <div class="footer">
-        <div class="container">
-          <h4>Feito com muito carinho por Felipe Ferro &hearts; SPTech &copy; 2024</h4>
+            <div id="div_erros_login"></div>
         </div>
-      </div>
+    </div>
+</div>
+
+
+<div class="footer">
+    <div class="container">
+        <h4>Feito com muito carinho por Felipe Ferro &hearts; SPTech &copy; 2024</h4>
+    </div>
+</div>
 </body>
 
 </html>
 
 <script>
-
 
     function entrar() {
         aguardar();
@@ -156,4 +155,29 @@
         cardErro.style.display = "none"
     }
 
+    let lastScrollTop = 0;
+    const header = document.querySelector(".header");
+
+    window.addEventListener("scroll", function () { //window é a pagina; addEventListener é uma acao que so acontece quando acontece um evento(nesse caso o scroll) e a function() é a function anonima que so opera dentro desse bloco;
+        let currentScroll = window.pageYOffset || document.documentElement.scrollTop; //window.PageYOffset é 
+        if (currentScroll > lastScrollTop) {
+            // Rolando para baixo
+            header.style.top = "-100px"; // Oculta o header devagar
+        } else {
+            // Rolando para cima
+            header.style.top = "0"; // Mostra o header devagar
+            header.style.backgroundColor = "rgba(0, 0, 0, 0.5)"; // Torna o cabeçalho branco
+            header.style.transition = "background-color 2s ease"; // Adiciona transição suave para a cor de fundo
+            header.style.color = "#000"
+        }
+
+        // Se o topo da página, permitindo alguma margem para variação, é alcançado, volte para transparente
+        if (currentScroll <= 10) {
+            header.style.backgroundColor = "rgba(255, 255, 255, 0)"; // Torna o cabeçalho transparente novament
+            header.style.transition = "background-color 2s ease"; // Adiciona transição suave para a cor de fundo
+        }
+
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Para lidar com rolagem para o topo
+    }, false);
+    
 </script>
