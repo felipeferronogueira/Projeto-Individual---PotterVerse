@@ -1,14 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: black;
-  min-height: 100vh; /* Garante que o corpo ocupe pelo menos a altura da viewport */
-  background-image: url(./img/1303125.jpg); 
-  background-size: cover;
-}
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap');
 
 :root {
   --tamanho-header: 80px;
@@ -18,28 +9,36 @@ body {
   --tamanho-footer: 55px;
 }
 
-.container {
-  display: flex;
-  width: 80%;
-  height: 100%;
-  margin: auto;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  /* Garante que o corpo ocupe pelo menos a altura da viewport */
 }
+
 
 .header {
   height: var(--tamanho-header);
-  background-color: rgba(255, 255, 255, 0); /* Branco transparente */
-  transition: background-color 0.3s ease; /* Transição suave da cor de fundo */
+  background-color: rgba(255, 255, 255, 0);
+  /* Branco transparente */
+  transition: background-color 0.3s ease;
+  /* Transição suave da cor de fundo */
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1000; /* Certifique-se de que o header esteja acima de outros elementos */
-  transition: background-color 0.3s ease, top 0.5s ease; /* Transição suave da cor de fundo e do movimento */
+  z-index: 1000;
+  /* Certifique-se de que o header esteja acima de outros elementos */
+  transition: background-color 0.3s ease, top 0.5s ease;
+  /* Transição suave da cor de fundo e do movimento */
 }
 
 .header.scroll-down {
-  background-color: rgba(0, 0, 0, 0.8); /* Adiciona um fundo com transparência quando o usuário rolar para baixo */
-  transition: top 0.3s ease; /* Transição suave do movimento */
+  background-color: rgba(0, 0, 0, 0.8);
+  /* Adiciona um fundo com transparência quando o usuário rolar para baixo */
+  transition: top 0.3s ease;
+  /* Transição suave do movimento */
 }
 
 .header .container {
@@ -47,6 +46,13 @@ body {
   align-items: center;
   height: 100%;
   width: 80%;
+}
+
+.container {
+  display: flex;
+  width: 80%;
+  height: 100%;
+  margin: auto;
 }
 
 .header a {
@@ -63,16 +69,23 @@ body {
   color: #e3b062;
 }
 
+.navbar a {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);
+  font-size: 20px;
+}
+
 .titulo {
   font-family: 'Benton Sans', sans-serif;
   font-weight: 3000;
   font-size: 40px;
-  margin: 0; /* Remova a margem padrão do p */
+  margin: 0;
+  /* Remova a margem padrão do p */
   padding: 0px 0;
-  margin-top: 10px; /* Ajuste o espaço entre o logotipo e a frase */
+  margin-top: 10px;
+  /* Ajuste o espaço entre o logotipo e a frase */
 }
 
-.logoHeader{
+.logoHeader {
   width: 90px;
   height: 70px;
   margin-right: 10px;
@@ -87,12 +100,11 @@ body {
   margin: 0;
 }
 
-/* BANNER */
-
 .banner {
-  height: calc(var(--tamanho-banner) + var(--tamanho-header)); /* Ajusta a altura do banner para incluir a altura do header */
-  background-image: url('./img/1303125.jpg');
+  position: relative;
+  background-image: url(./img/1303125\ -\ Copia.jpg);
   background-size: cover;
+  height: 800px;
 }
 
 .banner .container {
@@ -100,58 +112,87 @@ body {
   height: 100%;
 }
 
-
 .frase-banner {
-  font-family: 'Benton Sans', sans-serif; /* Adicione a fonte utilizada no site de exemplo */
-  font-weight: 1000; /* Ajuste o peso da fonte conforme necessário */
-  font-size: 35px; /* Ajuste o tamanho da fonte conforme necessário */
-  color: #ffffff; /* Ajuste a cor do texto para corresponder ao site de exemplo */
-  margin: 0; /* Remova a margem padrão */
-  padding: 20px 0px ; /* Adicione algum espaçamento interno para melhorar a aparência */
-  text-align: left; /* Alinhe o texto à esquerda */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5); /* Sombreamento sutil */
+  font-family: 'Benton Sans', sans-serif;
+  /* Adicione a fonte utilizada no site de exemplo */
+  font-weight: 1000;
+  /* Ajuste o peso da fonte conforme necessário */
+  font-size: 35px;
+  /* Ajuste o tamanho da fonte conforme necessário */
+  color: #ffffff;
+  /* Ajuste a cor do texto para corresponder ao site de exemplo */
+  margin: 0;
+  /* Remova a margem padrão */
+  padding: 20px 0px;
+  /* Adicione algum espaçamento interno para melhorar a aparência */
+  text-align: left;
+  /* Alinhe o texto à esquerda */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);
+  /* Sombreamento sutil */
 }
 
 .ban {
+  background-color: #1B1C1D;
   text-align: center;
-  padding: 20px;
+  padding: 0.1px;
 }
 
 .bann {
+  background-color: #1B1C1D;
   text-align: center;
-  padding: 20px;
+  padding: 0.1px;
 }
 
-
-.ban h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
+.banner .container {
+  align-items: center;
+  height: 100%;
 }
 
-.bann h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
+.frase-banner {
+  font-family: 'Benton Sans', sans-serif;
+  /* Adicione a fonte utilizada no site de exemplo */
+  font-weight: 1000;
+  /* Ajuste o peso da fonte conforme necessário */
+  font-size: 35px;
+  /* Ajuste o tamanho da fonte conforme necessário */
+  color: #ffffff;
+  /* Ajuste a cor do texto para corresponder ao site de exemplo */
+  margin: 0;
+  /* Remova a margem padrão */
+  padding: 20px 0px;
+  /* Adicione algum espaçamento interno para melhorar a aparência */
+  text-align: left;
+  /* Alinhe o texto à esquerda */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);
+  /* Sombreamento sutil */
 }
 
 .ban-image {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
-  margin-left: 10vh;
+  margin-left: 25vh;
 }
 
-.imgg{
-  height: 600px; 
-  width: 400px; 
+.bann-image {
+  display: flex;
+  align-items: center;
+  margin-left: 35vh;
+}
+
+
+.imgg {
+  height: 600px;
+  width: 400px;
   margin: 70px;
   transition: transform 0.3s, box-shadow 0.3s;
   border-radius: 10px;
 }
 
-.imgg:hover{
-  transform: scale(1.2); /* Aumenta o tamanho do card em 10% */
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); /* Aumenta a sombra quando o mouse está sobre o card */
+.imgg:hover {
+  transform: scale(1.2);
+  /* Aumenta o tamanho do card em 10% */
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+  /* Aumenta a sombra quando o mouse está sobre o card */
 }
 
 .ban-text {
@@ -171,14 +212,39 @@ body {
 }
 
 .ban h1 {
-  font-size: 36px;
-  margin-bottom: 20px;
+  font-family: 'Cinzel', serif;
+  font-size: 3em;
+  background: linear-gradient(150deg, #AE8625 1%, #ebe597 5%, #dab551 30%);
+  background-clip: text;
+  color: transparent;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);
+}
+
+.ban h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 3em;
+  background: linear-gradient(150deg, #AE8625 1%, #ebe597 5%, #dab551 30%);
+  background-clip: text;
+  color: transparent;
 }
 
 .bann h1 {
-  font-size: 36px;
-  margin-bottom: 20px;
+  font-family: 'Cinzel', serif;
+  font-size: 3em;
+  background: linear-gradient(150deg, #AE8625 1%, #ebe597 5%, #dab551 30%);
+  background-clip: text;
+  color: transparent;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);
 }
+
+.bann h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 3em;
+  background: linear-gradient(150deg, #AE8625 5%, #ebe597 45%, #d1a93c 90%);
+  background-clip: text;
+  color: transparent;
+}
+
 
 .ban p {
   font-size: 18px;
@@ -193,121 +259,73 @@ body {
 
 /* MISSÃO VISÃO VALORES */
 
-#sobre-nos{
-  background-image: url(./img/beaty.jpg);
-  background-size: cover;
-}
-
-.titulo-sobreNos {
-  text-align: center;
-  font-size: 3.5rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
-  color: white;
-}
-
-#sobre-nos .container {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-around;
-  gap: 6rem;
-}
-
-#sobre-nos .container .card {
-  width: 40%;
-  margin-bottom: 20px;
-  height: 100%;
-  background-color: #fff;
-  box-shadow: 0px 0px 19px 7px rgba(0,0,0,0.75);
-  padding: 20px;
-  border-radius: 10px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
+.alone{
+  font-family: 'Cinzel', serif;
+  font-size: 3em;
+  margin-top: 40px;
+  position: static;
   align-items: center;
-  overflow: auto; /* Adicionar isso */
-  text-align: center; 
-  transition: transform 0.3s, box-shadow 0.3s; /* Adiciona transição suave para transformação e sombra */ 
+  display: flex;
+  justify-content: center;
+  text-shadow: 1px 1px 2px rgb(255, 255, 255);
 }
 
-.card-imagem{
-  width: 80%;
-  height: 60%;
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 10px 40px;
+  background-color: #1B1C1D;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-#sobre-nos .container .nossos-valores{
-  text-align: start;
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  background-color: #ffffff;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-#sobre-nos .container .nossos-valores:hover {
-  transform: scale(1.125); /* Aumenta o tamanho do card em 10% */
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); /* Aumenta a sombra quando o mouse está sobre o card */
+.timeline-event {
+  padding: 20px 0;
+  position: relative;
+  width: 50%;
 }
 
-#sobre-nos .container:hover .nossos-valores:not(:hover) {
-  filter: blur(10px);
-  transform: scale(0.9, 0.9);
+.timeline-event:nth-child(odd) {
+  left: 0;
 }
 
-#sobre-nos .container h2 {
-  text-align: center;
-  font-size: 24px;
-  color: #000;
-  margin-bottom: 30px;
+.timeline-event:nth-child(even) {
+  left: 50%;
 }
 
-#sobre-nos .container h3 {
-  color: #000;
-  margin-bottom: 20px;
+.timeline-content {
+  padding: 20px;
+  background: white;
+  position: relative;
+  border-radius: 6px;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-#sobre-nos .container p {
-  color: #001d3d;
-  line-height: 1.6;
-  margin-bottom: 20px;
+.timeline-content:hover{
+  transform: scale(1.05);
 }
 
-#sobre-nos .container ul {
-  margin-bottom: 20px;
+.timeline-content h2 {
+  font-family: 'Cinzel', serif;
+  background: linear-gradient(150deg, rgb(174, 134, 37) 5%, rgb(175, 152, 18) 15%, rgb(124, 93, 9) 90%);
+  background-clip: text;
+  color: transparent;
 }
 
-#sobre-nos .container li {
-  color: #001d3d;
-  line-height: 1.6;
-}
-
-#sobre-nos .container .form-group {
-  margin-bottom: 20px;
-  width: 100%;
-}
-
-#sobre-nos .container label {
-  display: block;
-  margin-bottom: 5px;
-  color: #333;
-}
-
-#sobre-nos .container input[type="text"],
-#sobre-nos .container input[type="email"],
-#sobre-nos .container textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  max-width: 100%;
-}
-
-#sobre-nos .container button[type="submit"] {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-#sobre-nos .container button[type="submit"]:hover {
-  background-color: #0056b3;
+.timeline-content p {
+  margin: 10px 0 0;
 }
 
 /* FOOTER */
@@ -317,7 +335,8 @@ body {
   color: #fff;
   display: flex;
   font-size: 15px;
-  margin-top: auto; /* Empurra o footer para o final da página */
+  margin-top: auto;
+  /* Empurra o footer para o final da página */
 }
 
 .footer .container {
@@ -498,24 +517,29 @@ input {
 
 #seila {
   position: absolute;
-  top: 50%; /* Colocando o topo do #seila na metade da altura da .janela */
-  left: 50%; /* Colocando a esquerda do #seila na metade da largura da .janela */
-  transform: translate(-50%, -50%); /* Movendo o #seila para trás, metade de sua própria largura e altura */
+  top: 50%;
+  /* Colocando o topo do #seila na metade da altura da .janela */
+  left: 50%;
+  /* Colocando a esquerda do #seila na metade da largura da .janela */
+  transform: translate(-50%, -50%);
+  /* Movendo o #seila para trás, metade de sua própria largura e altura */
 }
+
 #seila .container {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-    padding: 0 6rem;
-    gap: 2rem;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  padding: 0 6rem;
+  gap: 2rem;
 }
 
 #seila .container .card {
-  flex: 0 0 calc(33.33% - 20px); /* Define a largura dos cartões para ocupar 1/3 do espaço, subtraindo o espaço entre eles */
+  flex: 0 0 calc(33.33% - 20px);
+  /* Define a largura dos cartões para ocupar 1/3 do espaço, subtraindo o espaço entre eles */
   margin-bottom: 20px;
   height: 200px;
   background-color: #fff;
-  box-shadow: 0px 0px 19px 7px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 19px 7px rgba(0, 0, 0, 0.75);
   padding: 20px;
   border-radius: 10px;
   box-sizing: border-box;
@@ -527,7 +551,8 @@ input {
 }
 
 .card-link {
-  text-decoration: none; /* Remover decoração de link */
+  text-decoration: none;
+  /* Remover decoração de link */
 }
 
 .cardd {
@@ -544,12 +569,15 @@ input {
   font-size: 18px;
   font-weight: bold;
   text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s; /* Adiciona transição suave para transformação e sombra */
+  transition: transform 0.3s, box-shadow 0.3s;
+  /* Adiciona transição suave para transformação e sombra */
 }
 
 .cardd:hover {
-  transform: scale(1.2); /* Aumenta o tamanho do card em 10% */
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); /* Aumenta a sombra quando o mouse está sobre o card */
+  transform: scale(1.2);
+  /* Aumenta o tamanho do card em 10% */
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+  /* Aumenta a sombra quando o mouse está sobre o card */
 }
 
 #seila .container:hover .cardd:not(:hover) {
@@ -572,7 +600,7 @@ input {
   background-size: cover;
 }
 
-.conteudo{
+.conteudo {
   background-image: url(../css/img/1309409.jpg);
   background-size: cover;
   /* Estilos padrão do card */
@@ -588,12 +616,15 @@ input {
   font-size: 18px;
   font-weight: bold;
   text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s; /* Adiciona transição suave para transformação e sombra */
+  transition: transform 0.3s, box-shadow 0.3s;
+  /* Adiciona transição suave para transformação e sombra */
 }
 
 .conteudo:hover {
-  transform: scale(1.2); /* Aumenta o tamanho do card em 10% */
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); /* Aumenta a sombra quando o mouse está sobre o card */
+  transform: scale(1.2);
+  /* Aumenta o tamanho do card em 10% */
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+  /* Aumenta a sombra quando o mouse está sobre o card */
 }
 
 .btnn {
@@ -609,7 +640,7 @@ input {
   transition: 0.5s;
   animation: gradient_301 5s ease infinite;
   border: double 4px transparent;
-  background-image: linear-gradient(#21212100, #21212100),  linear-gradient(137.48deg, #e3b062 10%, #49381f 45%, #353435 67%, #1b1b1b 93%);
+  background-image: linear-gradient(#21212100, #21212100), linear-gradient(137.48deg, #e3b062 10%, #49381f 45%, #353435 67%, #1b1b1b 93%);
   background-origin: border-box;
   background-clip: content-box, border-box;
 }
@@ -758,4 +789,3 @@ strong {
     box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
   }
 }
-
