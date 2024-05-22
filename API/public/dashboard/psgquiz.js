@@ -1,7 +1,7 @@
 var pontuacao = sessionStorage.getItem('pontuacao') ? parseInt(sessionStorage.getItem('pontuacao')) : 0;
 
 function redirecionar() {   
-    window.location.href = 'psgQuest1.html';
+    window.location.href = 'psg.html';
 }
 
 function zerar(){

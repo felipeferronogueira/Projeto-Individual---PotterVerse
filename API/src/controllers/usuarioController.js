@@ -93,7 +93,7 @@ function cadastrar(req, res) {
     }
 }
 
-function registrarPersonagens(req, res) {
+function registrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var qtdAcertos = req.body.qtdAcertosServer;
     var fkQuiz = req.body.fkQuizServer;
@@ -104,7 +104,7 @@ function registrarPersonagens(req, res) {
         res.status(400).send("A pontuacao tem que ser zerada antes do começo do quiz!");
     } else {
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.registrarPersonagens(qtdAcertos, fkQuiz, fkUsuario)
+        usuarioModel.registrar(qtdAcertos, fkQuiz, fkUsuario)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -124,5 +124,5 @@ function registrarPersonagens(req, res) {
 module.exports = {
     autenticar,
     cadastrar,
-    registrarPersonagens
+    registrar
 }

@@ -1,61 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quiz Harry Potter</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-    }
-    .quiz-container {
-      max-width: 600px;
-      margin: auto;
-      text-align: center;
-      padding: 20px;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-    }
-    .question {
-      font-size: 1.2em;
-    }
-    .image-container img {
-      max-width: 100%;
-      height: auto;
-    }
-    .options {
-      list-style: none;
-      padding: 0;
-    }
-    .options li {
-      margin: 10px 0;
-    }
-    .options button {
-      padding: 10px 20px;
-      font-size: 1em;
-      width: 100%;
-      border: none;
-      cursor: pointer;
-    }
-    .correct {
-      background-color: #4CAF50;
-      color: white;
-    }
-    .incorrect {
-      background-color: #f44336;
-      color: white;
-    }
-    .score {
-      font-size: 1.5em;
-      margin-top: 20px;
-    }
-  </style>
+  <link rel="stylesheet" href="../css/psg.css">
 </head>
+
 <body>
   <div class="quiz-container">
-    <div class="question" id="question"></div>
+    <div class="question" id="question"></div><br>
     <div class="image-container">
-      <img id="image" src="" alt="Character Image">
+      <img style="height: 300px;" id="image" src="" alt="Character Image">
     </div>
     <ul class="options" id="options">
       <li><button onclick="responder(0)">A</button></li>
@@ -65,10 +22,10 @@
     </ul>
     <div class="score" id="score"></div>
   </div>
-  
+
   <script>
     var contador = 0;
-    var pontuacao = 0;
+    var pontuacao = sessionStorage.getItem('pontuacao') ? parseInt(sessionStorage.getItem('pontuacao')) : 0;
 
     var perguntas = [
       'Quem é esta pessoa?',
@@ -84,16 +41,17 @@
     ];
 
     var imagens = [
-      '../css/img/hermione.jpg ',    
-      '../css/img/luna.jpg',        
-      '../css/img/draco.jpg',        
-      '../css/img/snape.jpg',       
-      '../css/img/riddle.jpg', 
-      '../css/img/sirius.jpg',      
-      '../css/img/ron.jpg',         
-      '../css/img/cedrico.jpg',    
-      '../css/img/minerva.jpg', 
-      '../css/img/moody.jpg'        
+      '../css/img/hermione.jpg ',
+      '../css/img/luna.jpg',
+      '../css/img/draco.jpg',
+      '../css/img/snape.jpg',
+      '../css/img/riddle.jpg',
+      '../css/img/sirius.jpg',
+      '../css/img/ron.jpg',
+      '../css/img/cedrico.jpg',
+      '../css/img/minerva.jpg',
+      '../css/img/moody.jpg',
+      '',
     ];
 
     var alternativas = [
@@ -131,13 +89,32 @@
         opcoes[alternativasCorretas[contador]].classList.add('correct');
       }
       contador++;
-      setTimeout(function() {
+      setTimeout(function () {
         if (contador < perguntas.length) {
           mostrarPergunta();
         } else {
-          document.getElementById('question').innerHTML = 'Quiz terminado!';
-          document.getElementById('options').style.display = 'none';
-          document.getElementById('score').innerHTML = 'Sua pontuação: ' + pontuacao + ' de ' + perguntas.length;
+          question.innerHTML = 'Quiz terminado!';
+          options.style.display = 'none';
+          score.innerHTML = 'Sua pontuação: ' + pontuacao + ' de ' + perguntas.length;
+          document.getElementById('image').style.display = 'none';
+
+          var qtdAcertosVar = pontuacao;
+          var fkQuizVar = 1;
+          var fkUsuarioVar = sessionStorage.ID_USUARIO;
+
+          fetch("/usuarios/registrar", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              // crie um atributo que recebe o valor recuperado aqui
+              // Agora vá para o arquivo routes/usuario.js
+              qtdAcertosServer: qtdAcertosVar,
+              fkQuizServer: fkQuizVar,
+              fkUsuarioServer: fkUsuarioVar
+            }),
+          });
         }
       }, 1000);
     }
@@ -145,4 +122,5 @@
     mostrarPergunta();
   </script>
 </body>
+
 </html>

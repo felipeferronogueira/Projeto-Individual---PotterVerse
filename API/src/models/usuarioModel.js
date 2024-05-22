@@ -22,7 +22,7 @@ function cadastrar(nome, cpf, email, senha, casaHogwartsId) {
     return database.executar(instrucaoSql);
 }
 
-function registrarPersonagens(qtdAcertos, fkQuiz, fkUsuario) {
+function registrar(qtdAcertos, fkQuiz, fkUsuario) {
     
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
@@ -36,5 +36,5 @@ function registrarPersonagens(qtdAcertos, fkQuiz, fkUsuario) {
 module.exports = {
     autenticar,
     cadastrar,
-    registrarPersonagens
+    registrar
 };

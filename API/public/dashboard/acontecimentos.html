@@ -21,7 +21,7 @@
 
   <script>
     var contador = 0;
-    var pontuacao = 0;
+    var pontuacao = sessionStorage.getItem('pontuacao') ? parseInt(sessionStorage.getItem('pontuacao')) : 0;
 
     var perguntas = [
       'Qual é o nome completo do personagem conhecido como "Voldemort"?',
@@ -75,13 +75,31 @@
         if (contador < perguntas.length) {
           mostrarPergunta();
         } else {
-          document.getElementById('question').innerHTML = 'Quiz terminado!';
-          document.getElementById('options').style.display = 'none';
-          document.getElementById('score').innerHTML = 'Sua pontuação: ' + pontuacao + ' de ' + perguntas.length;
+          question.innerHTML = 'Quiz terminado!';
+          options.style.display = 'none';
+          score.innerHTML = 'Sua pontuação: ' + pontuacao + ' de ' + perguntas.length;
+
+          var qtdAcertosVar = pontuacao;
+          var fkQuizVar = 3;
+          var fkUsuarioVar = sessionStorage.ID_USUARIO;
+
+          fetch("/usuarios/registrar", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              // crie um atributo que recebe o valor recuperado aqui
+              // Agora vá para o arquivo routes/usuario.js
+              qtdAcertosServer: qtdAcertosVar,
+              fkQuizServer: fkQuizVar,
+              fkUsuarioServer: fkUsuarioVar
+            }),
+          });
         }
       }, 1000);
     }
-
+    
     mostrarPergunta();
   </script>
 </body>

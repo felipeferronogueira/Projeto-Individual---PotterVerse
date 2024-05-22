@@ -1,238 +1,56 @@
-
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    background-image: url(../css/img/5aab18d5d3ba0f96c7091cc4cc3aae3d.jpg);
-    background-size: cover;
-    font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    overflow: auto;
-}
-
-:root {
-    --tamanho-header: 80px;
-    --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
-    --tamanho-simulador: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
-    --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
-    --tamanho-footer: 55px;
-}
-
-.container {
-    display: flex;
-    width: 80%;
-    height: 100%;
-    margin: auto;
-}
-
-
-.header {
-    height: var(--tamanho-header);
-    background-color: rgba(255, 255, 255, 0);
-    /* Branco transparente */
-    transition: background-color 0.3s ease;
-    /* Transição suave da cor de fundo */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    /* Certifique-se de que o header esteja acima de outros elementos */
-    transition: background-color 0.3s ease, top 0.5s ease;
-    /* Transição suave da cor de fundo e do movimento */
-}
-
-.header .container {
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
-    width: 80%;
-}
-
-.header.scroll-down {
-    background-color: rgba(0, 0, 0, 0.8);
-    /* Adiciona um fundo com transparência quando o usuário rolar para baixo */
-    transition: top 0.3s ease;
-    /* Transição suave do movimento */
-
-}
-
-.header .container {
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
-    width: 80%;
-}
-
-.logoHeader {
-    width: 90px;
-    height: 70px;
-    margin-right: 10px;
-}
-
-.logo-container {
-    display: flex;
-    align-items: center;
-}
-
-.navbar {
-    width: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    list-style: none;
-    color: #e3b062;
-}
-
-.header a {
-    text-decoration: none;
-    color: #e3b062;
-}
-
-.agora {
-    font-weight: 800;
-}
-
-.titulo {
-    font-family: 'Benton Sans', sans-serif;
-    font-weight: 3000;
-    font-size: 40px;
-    margin: 0;
-    /* Remova a margem padrão do p */
-    padding: 0px 0;
-    margin-top: 10px;
-    /* Ajuste o espaço entre o logotipo e a frase */
-}
-
-.header h1 {
-    margin: 0;
+  font-family: Arial, sans-serif;
+  background-image: url(./img/oi.jpg);
 }
 
 .quiz-container {
-    max-width: 800px;
-    margin: 0 auto;
-    background-color: rgba(0, 0, 0, 0.697);
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    width: 600px;
-    height: 550px;
+  max-width: 600px;
+  margin: auto;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.567);
 }
 
-.quiz-containe{
-    max-width: 800px;
-    margin: 0 auto;
-    background-color: rgba(0, 0, 0, 0.697);
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    width: 600px;
-    height: 600px;
+.question {
+  font-size: 1.2em;
+  color: white;
 }
 
-.next-button {
-    background-color: #cdab7770;
-    color: white;
-    padding: 12px 24px;
-    /* Reduzindo o padding para diminuir o tamanho do botão */
-    border: 2px solid #e3b062;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    transition: background-color 0.3s;
-    margin: 20px auto 0;
-    width: calc(100% - 20px);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.83);
+.image-container img {
+  max-width: 100%;
+  height: auto;
 }
 
-
-.answer-button {
-    background-color: #cdab7770;
-    color: white;
-    padding: 10px 20px;
-    /* Reduzindo o padding para diminuir o tamanho dos botões */
-    border: #e3b062 solid 2px;
-    border-radius: 8px;
-    /* Reduzindo o raio do border-radius para arredondar menos os cantos */
-    cursor: pointer;
-    font-size: 16px;
-    /* Reduzindo o tamanho da fonte */
-    font-weight: bold;
-    margin-bottom: 10px;
-    transition: background-color 0.3s;
-    width: calc(50% - 5px);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.83);
+.options {
+  list-style: none;
+  padding: 0;
 }
 
-.answer-group {
-    text-align: center;
-    /* Centralizando os botões */
+.options li {
+  margin: 10px 0;
 }
 
-.answer-button:hover{
-    background-color: #e3b062;
+.options button {
+  padding: 10px 20px;
+  font-size: 1em;
+  width: 100%;
+  border: none;
+  cursor: pointer;
 }
 
-.next-button:hover {
-    background-color: #e3b062;
+.correct {
+  background-color: #4caf50;
+  color: white;
 }
 
-.hermione{
-    width: 350px;
-    height: 350px;
+.incorrect {
+  background-color: #f44336;
+  color: white;
 }
 
-.quiz-psg{
-    width: 510px;
-    height: 300px;
-}
-
-.luna{
-    width: 350px;
-    height: 350px;
-}
-
-.draco{
-    width: 250px;
-    height: 380px;
-}
-
-.snape{
-    width: 350px;
-    height: 350px;
-}
-
-.riddle{
-    width: 250px;
-    height: 330px;
-}
-
-.sirius{
-    width: 350px;
-    height: 350px;
-}
-
-.ron{
-    width: 350px;
-    height: 350px;
-}
-
-.cedrico{
-    width: 350px;
-    height: 350px;
-}
-
-.minerva{
-    width: 350px;
-    height: 350px;
-}
-
-.moody{
-    width: 350px;
-    height: 350px;
+.score {
+  font-size: 1.5em;
+  margin-top: 20px;
+  color: white;
 }
