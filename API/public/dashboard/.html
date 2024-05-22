@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Harry Potter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .quiz-container {
+      max-width: 600px;
+      margin: auto;
+      text-align: center;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+    }
+    .question {
+      font-size: 1.2em;
+    }
+    .image-container img {
+      max-width: 100%;
+      height: auto;
+    }
+    .options {
+      list-style: none;
+      padding: 0;
+    }
+    .options li {
+      margin: 10px 0;
+    }
+    .options button {
+      padding: 10px 20px;
+      font-size: 1em;
+      width: 100%;
+      border: none;
+      cursor: pointer;
+    }
+    .correct {
+      background-color: #4CAF50;
+      color: white;
+    }
+    .incorrect {
+      background-color: #f44336;
+      color: white;
+    }
+    .score {
+      font-size: 1.5em;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <div class="question" id="question"></div>
+    <div class="image-container">
+      <img id="image" src="" alt="Character Image">
+    </div>
+    <ul class="options" id="options">
+      <li><button onclick="responder(0)">A</button></li>
+      <li><button onclick="responder(1)">B</button></li>
+      <li><button onclick="responder(2)">C"></button></li>
+      <li><button onclick="responder(3)">D</button></li>
+    </ul>
+    <div class="score" id="score"></div>
+  </div>
+  
+  <script>
+    var contador = 0;
+    var pontuacao = 0;
+
+    var perguntas = [
+      'Quem é esta pessoa?',
+      'Quem é esta pessoa?',
+      'Quem é esta pessoa?',
+      'Quem é esta pessoa?',
+      'Quem é esta pessoa?',
+      'Quem é esta pessoa?',
+      'Quem é esta pessoa?',
+      'Quem é esta pessoa?',
+      'Quem é esta pessoa?',
+      'Quem é esta pessoa?'
+    ];
+
+    var imagens = [
+      '../css/img/hermione.jpg ',    
+      '../css/img/luna.jpg',        
+      '../css/img/draco.jpg',        
+      '../css/img/snape.jpg',       
+      '../css/img/riddle.jpg', 
+      '../css/img/sirius.jpg',      
+      '../css/img/ron.jpg',         
+      '../css/img/cedrico.jpg',    
+      '../css/img/minerva.jpg', 
+      '../css/img/moody.jpg'        
+    ];
+
+    var alternativas = [
+      ['Cho Chang', 'Ginny Weasley', 'Luna Lovegood', 'Hermione Granger'],
+      ['Luna Lovegood', 'Bellatrix Lestrange', 'Nymphadora Tonks', 'Helena Ravenclaw'],
+      ['Harry Potter', 'Neville Longbottom', 'Draco Malfoy', 'Seamus Finnigan'],
+      ['Lucius Malfoy', 'Severus Snape', 'Remus Lupin', 'Sirius Black'],
+      ['Tom Riddle', 'Gellert Grindelwald', 'Albus Dumbledore', 'Newt Scamander'],
+      ['Remus Lupin', 'Sirius Black', 'Alastor Moody', 'Peter Pettigrew'],
+      ['Fred Weasley', 'George Weasley', 'Ron Weasley', 'Percy Weasley'],
+      ['Viktor Krum', 'Oliver Wood', 'Dean Thomas', 'Cedrico Diggory'],
+      ['Pomona Sprout', 'Sybill Trelawney', 'Minerva McGonagall', 'Dolores Umbridge'],
+      ['Kingsley Shacklebolt', 'Alastor Moody', 'Albus Dumbledore', 'Rufus Scrimgeour']
+    ];
+
+    var alternativasCorretas = [3, 0, 2, 1, 0, 1, 2, 3, 2, 1];
+
+    function mostrarPergunta() {
+      document.getElementById('question').innerHTML = perguntas[contador];
+      document.getElementById('image').src = imagens[contador];
+      var opcoes = document.getElementById('options').getElementsByTagName('button');
+      for (var cont = 0; cont < opcoes.length; cont++) {
+        opcoes[cont].innerHTML = alternativas[contador][cont];
+        opcoes[cont].classList.remove('correct', 'incorrect');
+      }
+    }
+
+    function responder(alternativa) {
+      var opcoes = document.getElementById('options').getElementsByTagName('button');
+      if (alternativa === alternativasCorretas[contador]) {
+        opcoes[alternativa].classList.add('correct');
+        pontuacao++;
+      } else {
+        opcoes[alternativa].classList.add('incorrect'); // Adiciona a classe "incorrect" ao botão de opção escolhido 
+        opcoes[alternativasCorretas[contador]].classList.add('correct');
+      }
+      contador++;
+      setTimeout(function() {
+        if (contador < perguntas.length) {
+          mostrarPergunta();
+        } else {
+          document.getElementById('question').innerHTML = 'Quiz terminado!';
+          document.getElementById('options').style.display = 'none';
+          document.getElementById('score').innerHTML = 'Sua pontuação: ' + pontuacao + ' de ' + perguntas.length;
+        }
+      }, 1000);
+    }
+
+    mostrarPergunta();
+  </script>
+</body>
+</html>

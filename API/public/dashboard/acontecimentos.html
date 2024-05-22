@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Harry Potter</title>
+  <link rel="stylesheet" href="../css/acont.css">
+</head>
+<body>
+
+  <div class="quiz-container">
+    <div class="question" id="question"></div>
+    <ul class="options" id="options">
+      <li><button onclick="responder(0)">A</button></li>
+      <li><button onclick="responder(1)">B</button></li>
+      <li><button onclick="responder(2)">C"></button></li>
+      <li><button onclick="responder(3)">D</button></li>
+    </ul>
+    <div class="score" id="score"></div>
+  </div>
+
+  <script>
+    var contador = 0;
+    var pontuacao = 0;
+
+    var perguntas = [
+      'Qual é o nome completo do personagem conhecido como "Voldemort"?',
+      'Em que ano Harry Potter começa a estudar em Hogwarts?',
+      'Qual é o nome da planta que ajuda Harry a respirar debaixo d\'água no Torneio Tribruxo?',
+      'Qual é o patrono de Hermione Granger?',
+      'Qual é a frase usada para abrir o Mapa do Maroto?',
+      'Quem mata Dumbledore?',
+      'Qual é o nome verdadeiro do lobisomem Remus Lupin?',
+      'Em qual livro Harry descobre que ele é um Horcrux?',
+      'Qual é o nome do elfo doméstico de Sirius Black?',
+      'Qual feitiço é usado para repelir Dementadores?'
+    ];
+
+    var alternativas = [
+      ['Tom Marvolo Riddle', 'Tom Marvolo Smith', 'Tom Marvolo Evans', 'Tom Marvolo Snape'],
+      ['1990', '1991', '1992', '1993'],
+      ['Mandrágora', 'Visgo do Diabo', 'Guelricho', 'Acônito'],
+      ['Lontra', 'Gato', 'Cervo', 'Coelho'],
+      ['Juro solenemente que estou tramando alguma encrenca', 'Eu prometo solenemente que estou até as orelhas de problemas', 'Eu juro solenemente que não vou fazer nada de bom', 'Eu solenemente juro que sou inocente'],
+      ['Bellatrix Lestrange', 'Severus Snape', 'Draco Malfoy', 'Fenrir Greyback'],
+      ['Remus John Lupin', 'Remus Jacob Lupin', 'Remus James Lupin', 'Remus Jason Lupin'],
+      ['Harry Potter e a Pedra Filosofal', 'Harry Potter e a Câmara Secreta', 'Harry Potter e o Enigma do Príncipe', 'Harry Potter e as Relíquias da Morte'],
+      ['Dobby', 'Kreacher', 'Winky', 'Hokey'],
+      ['Expecto Patronum', 'Expelliarmus', 'Lumos', 'Avada Kedavra']
+    ];
+
+    var alternativasCorretas = [0, 1, 2, 0, 0, 1, 0, 3, 1, 0];
+
+    function mostrarPergunta() {
+      document.getElementById('question').innerHTML = perguntas[contador];
+      var opcoes = document.getElementById('options').getElementsByTagName('button');
+      for (var cont = 0; cont < opcoes.length; cont++) {
+        opcoes[cont].innerHTML = alternativas[contador][cont];
+        opcoes[cont].classList.remove('correct', 'incorrect');
+      }
+    }
+
+    function responder(alternativa) {
+      var opcoes = document.getElementById('options').getElementsByTagName('button');
+      if (alternativa === alternativasCorretas[contador]) {
+        opcoes[alternativa].classList.add('correct');
+        pontuacao++;
+      } else {
+        opcoes[alternativa].classList.add('incorrect');
+        opcoes[alternativasCorretas[contador]].classList.add('correct');
+      }
+      console.log(pontuacao);
+      contador++;
+      setTimeout(function() {
+        if (contador < perguntas.length) {
+          mostrarPergunta();
+        } else {
+          document.getElementById('question').innerHTML = 'Quiz terminado!';
+          document.getElementById('options').style.display = 'none';
+          document.getElementById('score').innerHTML = 'Sua pontuação: ' + pontuacao + ' de ' + perguntas.length;
+        }
+      }, 1000);
+    }
+
+    mostrarPergunta();
+  </script>
+</body>
+</html>
