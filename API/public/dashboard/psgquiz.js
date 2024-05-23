@@ -4,11 +4,8 @@ function redirecionar() {
     window.location.href = 'psg.html';
 }
 
-function zerar(){
-    pontuacao = 0
-
-    sessionStorage.setItem('pontuacao', pontuacao);
-    console.log('Pontuacao:' + pontuacao);
+function redirecionar3() {   
+    window.location.href = 'acontecimentos.html';
 }
 
 function resposta1(respostaSelecionada1) {

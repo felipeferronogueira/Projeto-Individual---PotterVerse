@@ -21,7 +21,7 @@
 
   <script>
     var contador = 0;
-    var pontuacao = sessionStorage.getItem('pontuacao') ? parseInt(sessionStorage.getItem('pontuacao')) : 0;
+    var pontuacao = 0;
 
     var perguntas = [
       'Qual é o nome completo do personagem conhecido como "Voldemort"?',
@@ -71,6 +71,7 @@
       }
       console.log(pontuacao);
       contador++;
+      sessionStorage.pontuacao = pontuacao;
       setTimeout(function() {
         if (contador < perguntas.length) {
           mostrarPergunta();
