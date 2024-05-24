@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div style="width: 50%;">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+        $.ajax({
+            url: '/api/usuariosPorCasa',
+            method: 'GET',
+            success: function(usuariosPorCasa) {
+                const labels = usuariosPorCasa.map(casa => {
+                    switch (casa.fkCasa) {
+                        case 1:
+                            return 'Grifinória';
+                        case 2:
+                            return 'Sonserina';
+                        case 3:
+                            return 'Corvinal';
+                        case 4:
+                            return 'Lufa-Lufa';
+                        default:
+                            return '';
+                    }
+                });
+
+                const valores = usuariosPorCasa.map(casa => casa.total);
+
+                const ctx = document.getElementById('myChart').getContext('2d');
+                const myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Usuários por Casa',
+                            data: valores,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            },
+            error: function(error) {
+                console.error('Erro ao buscar dados de usuários por casa:', error);
+            }
+        });
+    });
+    </script>
+</body>
+</html>
+ 

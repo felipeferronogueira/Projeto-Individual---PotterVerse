@@ -599,6 +599,21 @@ input {
   background-size: cover;
 }
 
+.cardd1 {
+  background-image: url(./img/pla.jpg);
+  background-size: cover;
+}
+
+.cardd2 {
+  background-image: url(../css/img/c.jpg);
+  background-size: cover;
+}
+
+.cardd3 {
+  background-image: url(../css/img/jornal.jpg);
+  background-size: cover;
+}
+
 .conteudo {
   background-image: url(../css/img/1309409.jpg);
   background-size: cover;

@@ -1,35 +1,35 @@
-var database = require("../database/config");
+const medidaModel = require("../models/medidaModel");
+const database = require("../database/config"); // Certifique-se de que o caminho para o módulo de configuração do banco de dados está correto
 
-function buscarUltimasMedidas(idAquario, limite_linhas) {
+const getResumo = async (usuarioId, quiz) => {
+    try {
+        const instrucaoSql = `
+            SELECT 
+                idPontuacao, 
+                qtdAcertos 
+            FROM 
+                pontuacao 
+            WHERE 
+                fkUsuario = ${usuarioId} AND 
+                fkQuiz = ${quiz}
+            ORDER BY 
+                idPontuacao;
+        `;
+        
+        const resultado = await database.executar(instrucaoSql);
+        const resumo = resultado.map(item => ({
+            idPontuacao: item.idPontuacao,
+            acertos: item.qtdAcertos
+        }));
 
-    var instrucaoSql = `SELECT 
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,
-                        momento,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico
-                    FROM medida
-                    WHERE fk_aquario = ${idAquario}
-                    ORDER BY id DESC LIMIT ${limite_linhas}`;
-
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
-}
-
-function buscarMedidasEmTempoReal(idAquario) {
-
-    var instrucaoSql = `SELECT 
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico, 
-                        fk_aquario 
-                        FROM medida WHERE fk_aquario = ${idAquario} 
-                    ORDER BY id DESC LIMIT 1`;
-
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
-}
+        return resumo;
+    } catch (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar o resumo.", erro.sqlMessage);
+        return [];
+    }
+};
 
 module.exports = {
-    buscarUltimasMedidas,
-    buscarMedidasEmTempoReal
-}
+    getResumo
+};

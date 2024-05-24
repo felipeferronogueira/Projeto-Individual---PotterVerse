@@ -1,308 +1,110 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link rel="stylesheet" href="../css/chart.css" />
-  <title>Implementando o ChartJS</title>
+    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaTech | Dashboards</title>
+    <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-
 <body>
-  <div class="background">
-
-    <h1>DashBoard</h1>
-
-    <div class="container">
-      <div>
-        <canvas id="myChart" style="position: relative; height: 40vh; width: 40vw"></canvas>
-      </div>
-      <div>
-        <canvas id="myChart2" style="position: relative; height: 40vh; width: 40vw"></canvas>
-      </div>
+    
+    <select id="quizSelect">
+        <option value="0">Selecione um quiz</option>
+        <option value="1">Quiz de Personagens</option>
+        <option value="2">Quiz de Lugares</option>
+        <option value="3">Quiz de Acontecimentos</option>
+    </select>
+    
+    <div class="dash">
+        <canvas id="myChart"></canvas>
     </div>
+    
+    <script>
+        let chartInstance = null;
 
-    <div class="footer">
-      <div class="container">
-        <p style="color: #f50000;">Feito por Felipe Ferro Nogueira - 1CCO - SPTECH &copy </p>
-      </div>
-    </div>
-  </div>
-</body> 
-
-</html>
-
-<script>
-const ctx = document.getElementById("myChart");
-const ctx2 = document.getElementById("myChart2");
-var pontuacao = sessionStorage.getItem('pontuacao');    
-var erros = 10 - pontuacao;
-
-function obterDadosGrafico(idAquario) {
-
-alterarTitulo(idAquario)
-
-if (proximaAtualizacao != undefined) {
-    clearTimeout(proximaAtualizacao);
-}
-
-fetch(`/medidas/ultimas/${idAquario}`, { cache: 'no-store' }).then(function (response) {
-    if (response.ok) {
-        response.json().then(function (resposta) {
-            console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-            resposta.reverse();
-
-            plotarGrafico(resposta, idAquario);
-
+        document.addEventListener('DOMContentLoaded', () => {
+            const quizSelect = document.getElementById('quizSelect');
+            
+            quizSelect.addEventListener('change', () => {
+                const usuarioId = sessionStorage.getItem('ID_USUARIO');
+                const quiz = quizSelect.value;
+                if (quiz === '0') {
+                    alert('Selecione um quiz para visualizar o gráfico.');
+                    return;
+                }
+                getResumo(usuarioId, quiz)
+                   .then(resumo => {
+                        if (resumo.length === 0) {
+                            alert('Você não possui pontuação nesse quiz. Faça o quiz para visualizar o gráfico.');
+                            return;
+                        }
+                        plotarGrafico(resumo);
+                    })
+                   .catch(error => {
+                        console.error(error);
+                        alert('Ocorreu um erro ao buscar as pontuações. Tente novamente mais tarde.');
+                    });
+            });
         });
-    } else {
-        console.error('Nenhum dado encontrado ou erro na API');
-    }
-})
-    .catch(function (error) {
-        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-    });
-}
 
-// Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
-// Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
-// A função *plotarGrafico* também invoca a função *atualizarGrafico*
-function plotarGrafico(resposta, idAquario) {
-
-console.log('iniciando plotagem do gráfico...');
-
-// Criando estrutura para plotar gráfico - labels
-let labels = [];
-
-// Criando estrutura para plotar gráfico - dados
-let dados = {
-    labels: labels,
-    datasets: [{
-        label: 'Acertos',
-        data: [],
-        fill: false,
-        borderColor: 'white',
-        tension: 0.1
-    },
-    {
-        label: 'Erros',
-        data: [],
-        fill: false,
-        borderColor: 'white',
-        tension: 0.1
-    }]
-}; 
-
-console.log('----------------------------------------------')
-console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-console.log(resposta)
-
-// Inserindo valores recebidos em estrutura para plotar o gráfico
-for (i = 0; i < resposta.length; i++) {
-    var registro = resposta[i];
-    labels.push(registro.momento_grafico);
-    dados.datasets[0].data.push(registro.umidade);
-    dados.datasets[1].data.push(registro.temperatura);
-}
-
-console.log('----------------------------------------------')
-console.log('O gráfico será plotado com os respectivos valores:')
-console.log('Labels:')
-console.log(labels)
-console.log('Dados:')
-console.log(dados.datasets)
-console.log('----------------------------------------------')
-
-// Criando estrutura para plotar gráfico - config
-const config = {
-    type: 'line',
-    data: dados,
-};
-
-// Adicionando gráfico criado em div na tela
-let myChart = new Chart(
-    document.getElementById(`myChartCanvas${idAquario}`),
-    config
-);
-
-setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
-}
-
-
-// Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
-// buscando a última medida inserida em tabela contendo as capturas, 
-
-//     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
-//     Para ajustar o "select", ajuste o comando sql em src/models
-function atualizarGrafico(idAquario, dados, myChart) {
-
-
-
-fetch(`/medidas/tempo-real/${idAquario}`, { cache: 'no-store' }).then(function (response) {
-    if (response.ok) {
-        response.json().then(function (novoRegistro) {
-
-            obterdados(idAquario);
-            // alertar(novoRegistro, idAquario);
-            console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-            console.log(`Dados atuais do gráfico:`);
-            console.log(dados);
-
-            let avisoCaptura = document.getElementById(`avisoCaptura${idAquario}`)
-            avisoCaptura.innerHTML = ""
-
-
-            if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
-                console.log("---------------------------------------------------------------")
-                console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-                avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
-                console.log("Horário do novo dado capturado:")
-                console.log(novoRegistro[0].momento_grafico)
-                console.log("Horário do último dado capturado:")
-                console.log(dados.labels[dados.labels.length - 1])
-                console.log("---------------------------------------------------------------")
-            } else {
-                // tirando e colocando valores no gráfico
-                dados.labels.shift(); // apagar o primeiro
-                dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
-
-                dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-                dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
-
-                dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
-                dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
-
-                myChart.update();
+        async function getResumo(usuarioId, quiz) {
+            const response = await fetch(`/medidas/resumo/${usuarioId}/${quiz}`);
+            if (!response.ok) {
+                throw new Error('Erro na resposta do servidor');
             }
-
-            // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-            proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
-        });
-    } else {
-        console.error('Nenhum dado encontrado ou erro na API');
-        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-        proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
-    }
-})
-    .catch(function (error) {
-        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-    });
-
-}
-
-n
-  
-
-new Chart(ctx2, {
-  type: "bar",
-  data: {
-    labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho"],
-    datasets: [{
-        label: "Temperatura Média",
-        data: [0 + 22, 10 + 14, 20 + 7, 30 - 7, 40 - 20, 50 - 32],
-        borderWidth: 2,
-        borderColor: "rgb(0, 153, 180)",
-      },
-      {
-        label: "Umidade Média",
-        data: [0 + 90, 10 + 79, 20 + 73, 30 + 57, 40 + 48, 50 + 32],
-        borderWidth: 2,
-        borderColor: "#f5cc00",
-      },
-    ],
-  },
-  options: {
-    scales: {
-      x: {
-        ticks: {
-          color: "white", // Cor dos meses (rótulos no eixo x)
-        },
-        grid: {
-          color: 'rgba(255, 255, 255, 0.2)', // Cor das linhas do grid no eixo x (branco com opacidade)
-        },
-      },
-      y: {
-        beginAtZero: true,
-        ticks: {
-          color: "white", // Cor dos valores à esquerda dos meses (eixo y)
-        },
-        grid: {
-          color: 'rgba(255, 255, 255, 0.2)', // Cor das linhas do grid no eixo y (branco com opacidade)
-        },
-      },
-    },
-    legend: {
-      labels: {
-        color: "white", // Cor dos nomes na legenda
-      },
-    },
-    plugins: {
-      legend: {
-        labels: {
-          color: 'white' // Cor dos nomes de dataset (Temperatura Média e Umidade Média)
+            const data = await response.json();
+            return data;
         }
-      }
-    },
-    layout: {
-      padding: {
-        left: 10,
-        right: 10,
-        top: 10,
-        bottom: 10
-      }
-    }
-  },
-});
 
-  const config = {
-    type: "bar",
-    data: data,
-    options: {},
-  };
-
-  function obter(){
-    fetch("/usuarios/autenticar")
-            .then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
-
-            if (resposta.ok) {
-                console.log(resposta);
-
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.CPF = json.cpf;
-                    sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
-
-                    setTimeout(function () {
-                        window.location = "./dashboard/conteudo.html";
-                    }, 1000); // apenas para exibir o loading
-
-                });
-
-            } else {
-
-                console.log("Houve um erro ao tentar realizar o login!");
-
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    finalizarAguardar(texto);
-                });
+        function plotarGrafico(resumo) {
+            const ctx = document.getElementById('myChart').getContext('2d');
+            
+            // Destroi o gráfico existente se houver um
+            if (chartInstance) {
+                chartInstance.destroy();
             }
 
-        }).catch(function (erro) {
-            console.log(erro);
-        })
+            const acertos = [];
+            const erros = [];
+            resumo.forEach(item => {
+                acertos.push(item.acertos);
+                erros.push(10 - item.acertos); // Ajuste se a quantidade de questões for diferente de 10
+            });
 
-        return false;
-    }
-</script>
+            const labels = resumo.map((item, index) => `Tentativa ${index + 1}`);
 
-<script>
-  const myChart = new Chart(document.getElementById("myChart"), config);
-  const myChart2 = new Chart(document.getElementById("myChart2"), config2);
-</script>
+            chartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Acertos',
+                        data: acertos,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }, {
+                        label: 'Erros',
+                        data: erros,
+                        backgroundColor: 'rgba(199, 52, 52, 0.2)',
+                        borderColor: 'rgba(199, 52, 52, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

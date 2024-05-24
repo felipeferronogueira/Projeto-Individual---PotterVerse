@@ -13,7 +13,7 @@
     <ul class="options" id="options">
       <li><button onclick="responder(0)">A</button></li>
       <li><button onclick="responder(1)">B</button></li>
-      <li><button onclick="responder(2)">C"></button></li>
+      <li><button onclick="responder(2)">C</button></li>
       <li><button onclick="responder(3)">D</button></li>
     </ul>
     <div class="score" id="score"></div>
@@ -21,35 +21,35 @@
 
   <script>
     var contador = 0;
-    var pontuacao3 = 0;
+    var pontuacao2 = 0;
 
     var perguntas = [
-      'Qual é o nome completo do personagem conhecido como "Voldemort"?',
-      'Em que ano Harry Potter começa a estudar em Hogwarts?',
-      'Qual é o nome da planta que ajuda Harry a respirar debaixo d\'água no Torneio Tribruxo?',
-      'Qual é o patrono de Hermione Granger?',
-      'Qual é a frase usada para abrir o Mapa do Maroto?',
-      'Quem mata Dumbledore?',
-      'Qual é o nome verdadeiro do lobisomem Remus Lupin?',
-      'Em qual livro Harry descobre que ele é um Horcrux?',
-      'Qual é o nome do elfo doméstico de Sirius Black?',
-      'Qual feitiço é usado para repelir Dementadores?'
+      'Onde Harry Potter encontra a Pedra Filosofal?',
+      'Qual é a localização da loja de varinhas de Ollivander?',
+      'Onde fica a sede da Ordem da Fênix?',
+      'Qual é o nome do pub que serve de entrada para o Beco Diagonal?',
+      'Em que lugar é encontrado o diadema perdido de Rowena Ravenclaw?',
+      'Onde Harry pega o Expresso de Hogwarts para sua primeira viagem à escola?',
+      'Qual é o nome da floresta onde Harry encontra Aragog?',
+      'Onde está localizado o Ministério da Magia?',
+      'Qual é o nome do banco onde os bruxos guardam seu dinheiro?',
+      'Em que local é realizada a Copa Mundial de Quadribol no quarto livro?'
     ];
 
     var alternativas = [
-      ['Tom Marvolo Riddle', 'Tom Marvolo Smith', 'Tom Marvolo Evans', 'Tom Marvolo Snape'],
-      ['1990', '1991', '1992', '1993'],
-      ['Mandrágora', 'Visgo do Diabo', 'Guelricho', 'Acônito'],
-      ['Lontra', 'Gato', 'Cervo', 'Coelho'],
-      ['Juro solenemente que estou tramando alguma encrenca', 'Eu prometo solenemente que estou até as orelhas de problemas', 'Eu juro solenemente que não vou fazer nada de bom', 'Eu solenemente juro que sou inocente'],
-      ['Bellatrix Lestrange', 'Severus Snape', 'Draco Malfoy', 'Fenrir Greyback'],
-      ['Remus John Lupin', 'Remus Jacob Lupin', 'Remus James Lupin', 'Remus Jason Lupin'],
-      ['Harry Potter e a Pedra Filosofal', 'Harry Potter e a Câmara Secreta', 'Harry Potter e o Enigma do Príncipe', 'Harry Potter e as Relíquias da Morte'],
-      ['Dobby', 'Kreacher', 'Winky', 'Hokey'],
-      ['Expecto Patronum', 'Expelliarmus', 'Lumos', 'Avada Kedavra']
+      ['A Câmara Secreta', 'A Sala Precisa', 'O Porão da casa dos Weasley', 'A Câmara de Espelhos de Hogwarts'],
+      ['Hogsmeade', 'Beco Diagonal', 'Godric\'s Hollow', 'Avenal'],
+      ['Rua dos Alfeneiros, número 4', 'Largo Grimmauld, número 12', 'A Mansão dos Malfoy', 'Casa dos Lovegood'],
+      ['Cabeça de Javali', 'O Três Vassouras', 'O Caldeirão Furado', 'O Rabo-Córneo'],
+      ['Sala Precisa', 'Câmara Secreta', 'Torre de Astronomia', 'Biblioteca de Hogwarts'],
+      ['Plataforma 9 ¾ na Estação King\'s Cross', 'Estação de Hogsmeade', 'Largo Grimmauld', 'Avenal'],
+      ['Floresta Proibida', 'Floresta de Dean', 'Floresta Negra', 'Floresta dos Centauros'],
+      ['Embaixo do Beco Diagonal', 'Embaixo da rua no centro de Londres', 'Na Torre de Londres', 'Em Godric\'s Hollow'],
+      ['Gringotes', 'Banco Bruxo de Londres', 'Banco de Hogsmeade', 'Banco Diagon'],
+      ['Beco Diagonal', 'Floresta Proibida', 'Campo de Quadribol de Hogwarts', 'Terrenos da Família Weasley']
     ];
 
-    var alternativasCorretas = [0, 1, 2, 0, 0, 1, 0, 3, 1, 0];
+    var alternativasCorretas = [3, 1, 1, 2, 0, 0, 0, 1, 0, 3];
 
     function mostrarPergunta() {
       document.getElementById('question').innerHTML = perguntas[contador];
@@ -64,24 +64,24 @@
       var opcoes = document.getElementById('options').getElementsByTagName('button');
       if (alternativa === alternativasCorretas[contador]) {
         opcoes[alternativa].classList.add('correct');
-        pontuacao3++;
+        pontuacao2++;
       } else {
         opcoes[alternativa].classList.add('incorrect');
         opcoes[alternativasCorretas[contador]].classList.add('correct');
       }
-      console.log(pontuacao3);
+      console.log(pontuacao2);
       contador++;
-      sessionStorage.pontuacao3 = pontuacao3;
+      sessionStorage.pontuacao2 = pontuacao2;
       setTimeout(function() {
         if (contador < perguntas.length) {
           mostrarPergunta();
         } else {
           question.innerHTML = 'Quiz terminado!';
           options.style.display = 'none';
-          score.innerHTML = 'Sua pontuação: ' + pontuacao3 + ' de ' + perguntas.length;
+          score.innerHTML = 'Sua pontuação: ' + pontuacao2 + ' de ' + perguntas.length;
 
-          var qtdAcertosVar = pontuacao3;
-          var fkQuizVar = 3;
+          var qtdAcertosVar = pontuacao2;
+          var fkQuizVar = 2;
           var fkUsuarioVar = sessionStorage.ID_USUARIO;
 
           fetch("/usuarios/registrar", {
@@ -90,8 +90,6 @@
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              // crie um atributo que recebe o valor recuperado aqui
-              // Agora vá para o arquivo routes/usuario.js
               qtdAcertosServer: qtdAcertosVar,
               fkQuizServer: fkQuizVar,
               fkUsuarioServer: fkUsuarioVar

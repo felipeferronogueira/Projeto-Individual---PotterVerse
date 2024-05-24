@@ -25,7 +25,7 @@
 
   <script>
     var contador = 0;
-    var pontuacao = sessionStorage.getItem('pontuacao') ? parseInt(sessionStorage.getItem('pontuacao')) : 0;
+    var pontuacao1 = 0;
 
     var perguntas = [
       'Quem é esta pessoa?',
@@ -83,22 +83,23 @@
       var opcoes = document.getElementById('options').getElementsByTagName('button');
       if (alternativa === alternativasCorretas[contador]) {
         opcoes[alternativa].classList.add('correct');
-        pontuacao++;
+        pontuacao1++;
       } else {
         opcoes[alternativa].classList.add('incorrect'); // Adiciona a classe "incorrect" ao botão de opção escolhido 
         opcoes[alternativasCorretas[contador]].classList.add('correct');
       }
       contador++;
+      sessionStorage.pontuacao1 = pontuacao1;
       setTimeout(function () {
         if (contador < perguntas.length) {
           mostrarPergunta();
         } else {
           question.innerHTML = 'Quiz terminado!';
           options.style.display = 'none';
-          score.innerHTML = 'Sua pontuação: ' + pontuacao + ' de ' + perguntas.length;
+          score.innerHTML = 'Sua pontuação: ' + pontuacao1 + ' de ' + perguntas.length;
           document.getElementById('image').style.display = 'none';
 
-          var qtdAcertosVar = pontuacao;
+          var qtdAcertosVar = pontuacao1;
           var fkQuizVar = 1;
           var fkUsuarioVar = sessionStorage.ID_USUARIO;
 

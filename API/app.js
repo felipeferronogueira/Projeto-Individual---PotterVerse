@@ -13,6 +13,7 @@ var path = require("path");
 var PORTA_APP = process.env.APP_PORT;
 var HOST_APP = process.env.APP_HOST;
 
+
 var app = express();
 
 var indexRouter = require("./src/routes/index");
@@ -34,6 +35,10 @@ app.use("/avisos", avisosRouter);
 app.use("/medidas", medidasRouter);
 app.use("/aquarios", aquariosRouter);
 app.use("/empresas", empresasRouter);
+
+const casasRouter = require('./src/routes/casas');
+app.use('/api', casasRouter);
+
 
 app.listen(PORTA_APP, function () {
     console.log(`
