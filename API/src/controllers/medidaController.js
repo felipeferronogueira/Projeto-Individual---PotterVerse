@@ -6,7 +6,11 @@ function getResumo(req, res) {
 
     medidaModel.getResumo(usuarioId, quiz)
       .then(resultado => {
-           res.status(200).json(resultado);
+        const resumo = resultado.map(item => ({
+            idPontuacao: item.idPontuacao,
+            acertos: item.qtdAcertos
+        }));
+           res.status(200).json(resumo);
        })
       .catch(erro => {
            console.log(erro);

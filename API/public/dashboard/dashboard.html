@@ -20,14 +20,15 @@
         <option value="3">Quiz de Acontecimentos</option>
     </select>
     
-    <div class="dash">
+    <div class="dash" style="width: 50%; border-radius: 5px; background-color: rgba(0, 0, 0, 0.788);">
         <canvas id="myChart"></canvas>
     </div>
     
     <script>
-        let chartInstance = null;
+        var chartInstance = null;
 
-        document.addEventListener('DOMContentLoaded', () => {
+        window.addEventListener('load', () => {
+
             const quizSelect = document.getElementById('quizSelect');
             
             quizSelect.addEventListener('change', () => {
@@ -52,6 +53,7 @@
             });
         });
 
+        
         async function getResumo(usuarioId, quiz) {
             const response = await fetch(`/medidas/resumo/${usuarioId}/${quiz}`);
             if (!response.ok) {
@@ -64,22 +66,24 @@
         function plotarGrafico(resumo) {
             const ctx = document.getElementById('myChart').getContext('2d');
             
-            // Destroi o gráfico existente se houver um
             if (chartInstance) {
                 chartInstance.destroy();
             }
 
             const acertos = [];
             const erros = [];
+
             resumo.forEach(item => {
                 acertos.push(item.acertos);
-                erros.push(10 - item.acertos); // Ajuste se a quantidade de questões for diferente de 10
+                erros.push(10 - item.acertos); 
             });
 
             const labels = resumo.map((item, index) => `Tentativa ${index + 1}`);
 
+            console.log(labels);
+            
             chartInstance = new Chart(ctx, {
-                type: 'bar',
+                type: 'line',
                 data: {
                     labels: labels,
                     datasets: [{

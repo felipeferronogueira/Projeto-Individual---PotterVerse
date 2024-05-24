@@ -10,7 +10,7 @@ body {
   padding: 20px;
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.567);
-  margin-top: 45px;
+  margin-top: 55px;
 }
 
 .question {
@@ -80,7 +80,7 @@ body {
   text-align: center;
   width: 600px;
   height: 520px;
-  margin-top: 25px;
+  margin-top: 60px;
 }
 
 .next-button {
