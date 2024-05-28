@@ -1,0 +1,616 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    /* Garante que o corpo ocupe pelo menos a altura da viewport */
+    min-height: 100vh;
+}
+
+.ban {
+    background-color: #1B1C1D;
+    text-align: center;
+    padding: 0.1px;
+}
+
+.bann {
+    background-color: #1B1C1D;
+    text-align: center;
+    padding: 0.1px;
+}
+
+.bannn {
+    background-color: #1B1C1D;
+    text-align: center;
+    padding: 0.1px;
+}
+
+
+.ban-image {
+    display: flex;
+    align-items: center;
+    margin-left: 25vh;
+}
+
+.bann-image {
+    display: flex;
+    align-items: center;
+    margin-left: 35vh;
+}
+
+
+.imgg {
+    height: 600px;
+    width: 400px;
+    margin: 70px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-radius: 10px;
+}
+
+.imgg:hover {
+    transform: scale(1.2);
+    /* Aumenta o tamanho do card em 10% */
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    /* Aumenta a sombra quando o mouse está sobre o card */
+}
+
+.ban-text {
+    width: 50%;
+    text-align: left;
+    padding-left: 20px;
+    color: white;
+}
+
+.bann-text {
+    width: 50%;
+    text-align: left;
+    padding-left: 20px;
+    color: white;
+}
+
+.ban h1 {
+    margin-top: 100px;
+    margin-bottom: 140px;
+    font-family: 'Cinzel', serif;
+    margin-top: 12vh;
+    ;
+    font-size: 3em;
+    background: linear-gradient(150deg, #AE8625 5%, #aca65b 25%, #d1a93c 90%);
+    background-clip: text;
+    color: transparent;
+}
+
+.ban h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 3em;
+    background: linear-gradient(150deg, #AE8625 5%, #ebe597 45%, #d1a93c 90%);
+    background-clip: text;
+    color: transparent;
+}
+
+
+.bann h1 {
+    margin-top: 100px;
+    font-family: 'Cinzel', serif;
+    font-size: 3em;
+    background: linear-gradient(150deg, #AE8625 5%, #aca65b 25%, #d1a93c 90%);
+    background-clip: text;
+    color: transparent;
+}
+
+.bann h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 3em;
+    background: linear-gradient(150deg, #AE8625 5%, #ebe597 45%, #d1a93c 90%);
+    background-clip: text;
+    color: transparent;
+}
+
+.bannn h1 {
+    margin-top: 140px;
+    font-family: 'Cinzel', serif;
+    font-size: 3em;
+    background: linear-gradient(150deg, #AE8625 5%, #aca65b 25%, #d1a93c 90%);
+    background-clip: text;
+    color: transparent;
+}
+
+.bannn h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 3em;
+    background: linear-gradient(150deg, #AE8625 5%, #ebe597 45%, #d1a93c 90%);
+    background-clip: text;
+    color: transparent;
+}
+
+.ban p {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.bann p {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.bannn p {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.imgg {
+    height: 600px;
+    width: 400px;
+    margin: 70px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-radius: 10px;
+}
+
+.imgg:hover {
+    transform: scale(1.2);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+}
+
+.img {
+    height: 600px;
+    width: 400px;
+    margin: 20px;
+    transition: transform 0.2s, box-shadow 0.3s;
+    border-radius: 10px;
+}
+
+.img:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+}
+
+.imggg {
+    height: 615px;
+    width: 330px;
+    margin: 70px;
+    transition: transform 0.2s, box-shadow 0.3s;
+    border-radius: 10px;
+}
+
+.imggg:hover {
+    transform: scale(1.2);
+    /* Aumenta o tamanho do card em 10% */
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    /* Aumenta a sombra quando o mouse está sobre o card */
+}
+
+.movies-section {
+    background-color: #1B1C1D;
+    color: white;
+    text-align: center;
+    padding: 50px 0;
+}
+
+.movies-section h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 3em;
+    background: linear-gradient(150deg, #AE8625 5%, #aca65b 25%, #d1a93c 90%);
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 50px;
+}
+
+.movie {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.movie h2{
+    font-family: 'Cinzel', serif;
+    font-size: 2em;
+    background: linear-gradient(150deg, #AE8625 5%, #aca65b 25%, #d1a93c 90%);
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 50px;
+}
+
+.movie-content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.movie-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.info-column {
+    padding: 10px;
+    margin: 10px;
+    background-color: rgb(59, 59, 59);
+    color: white;
+    border-radius: 5px;
+    flex: 1;
+    max-width: calc(33.33% - 20px);
+    transition: transform 0.2s, box-shadow 0.3s;
+}
+
+.info-column:hover{
+    transform: scale(1.025);
+    /* Aumenta o tamanho do card em 10% */
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    /* Aumenta a sombra quando o mouse está sobre o card */
+}
+
+.info-column:last-child {
+    margin-left: 20px;
+}
+
+.movie-text {
+    color: black;
+    max-width: none;
+    text-align: justify;
+    /* Alinha o texto justificado */
+    position: relative;
+    z-index: 2;
+}
+
+.movie-text p,
+.movie-text ul {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.movie-text ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.character-card {
+    background-color: #2C2C2E;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 30px;
+    max-width: 900px;
+}
+
+.character-card h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.character-card ul {
+    list-style-type: disc;
+    text-align: left;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.character-card ul li {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+    #seila {
+    height: auto;
+  }
+  
+  #seila .container {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    padding: 0 6rem;
+    gap: 2rem;
+  }
+  
+  #seila .container .card {
+    flex: 0 0 calc(33.33% - 20px);
+    /* Define a largura dos cartões para ocupar 1/3 do espaço, subtraindo o espaço entre eles */
+    margin-bottom: 20px;
+    height: 200px;
+    box-shadow: 0px 0px 19px 7px rgba(0, 0, 0, 0.75);
+    padding: 20px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+    text-align: center;
+  }
+  
+  .flip-card {
+    background-color: transparent;
+    width: 350px;
+    height: 450px;
+    perspective: 1000px;
+    font-family: sans-serif;
+    margin: 5px;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-card-front, .flip-card-back {
+    box-shadow: 0 8px 14px 0 rgba(0,0,0,0.2);
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 10px;
+}
+
+.flip-card-front {
+    background-size: cover;
+}
+
+.flip-card-back {
+    transform: rotateY(180deg);
+    background-color: rgb(59, 59, 59);
+    color: white;
+    text-align: center;
+    justify-content: center;
+    padding: 4px;
+}
+
+.flip-card-back p {
+    justify-content: center;
+}
+
+.flip-cardd {
+    background-color: transparent;
+    width: 350px; /* Defina o tamanho do cartão aqui */
+    height: 450px;
+    perspective: 1000px;
+    font-family: sans-serif;
+    margin: 5px;
+}
+
+.flip-cardd:hover .flip-card-innerr {
+    transform: rotateY(180deg);
+}
+
+.flip-card-innerr {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-card-frontt, .flip-card-backk {
+    box-shadow: 0 8px 14px 0 rgba(0,0,0,0.2);
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* width: 100%; Remova esta linha */
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 10px;
+}
+
+.flip-card-frontt {
+    background-size: cover;
+}
+
+.flip-card-backk {
+    transform: rotateY(-180deg);
+    background-color: rgb(59, 59, 59);
+    color: white;
+    text-align: center;
+    justify-content: center;
+}
+
+.flip-card-backk p {
+    justify-content: center;
+}
+
+.card1 {
+    background-image: url(../css/img/harri\ potti.jpg);
+    background-size: cover;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);
+}
+
+.card2{
+    background-image: url(../css/img/02.png);
+    background-size: cover;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);
+}
+.card3 {
+    background-image: url(../css/img/03.png);
+    background-size: cover;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);
+}
+
+.card4 {
+    background-image: url(../css/img/04.png);
+    background-size: cover;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);
+}
+
+.card5 {
+    background-image: url(../css/img/05.jpg);
+    background-size: cover;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);
+}
+
+.card6 {
+    background-image: url(../css/img/06.jpg);
+    background-size: cover;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);
+}
+
+.card7 {
+    background-image: url(../css/img/07.jpg);
+    background-size: cover;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);
+}
+
+.card8 {
+    background-image: url(../css/img/08.jpg);
+    background-size: cover;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);
+}
+
+.card9 {
+    background-image: url(../css/img/09.jpg);
+    background-size: cover;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);
+}
+
+.card10 {
+    background-image: url(../css/img/10.jpg);
+    background-size: cover;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);
+}
+
+.card11 {
+    background-image: url(../css/img/20.jpg);
+    background-size: cover;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);
+}
+
+.card12 {
+    background-image: url(../css/img/11.jpg);
+    background-size: cover;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);
+}
+
+.card13 {
+    background-image: url(../css/img/12.jpg);
+    background-size: cover;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);
+}
+
+.card14 {
+    background-image: url(../css/img/13.jpg);
+    background-size: cover;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);
+}
+
+.card15 {
+    background-image: url(../css/img/14.jpg);
+    background-size: cover;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);
+}
+
+.card16 {
+    background-image: url(../css/img/15.jpg);
+    background-size: cover;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);
+}
+
+.card17 {
+    background-image: url(../css/img/16.jpg);
+    background-size: cover;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);
+}
+
+.card18 {
+    background-image: url(../css/img/17.jpg);
+    
+}
+
+.card19 {
+    background-image: url(../css/img/18.jpg);
+    background-size: cover;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);
+}
+
+.card20 {
+    background-image: url(../css/img/19.jpg);
+    background-size: cover;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);
+}
+
+.card21 {
+    background-image: url(../css/img/21.jpg);
+     
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);
+}
+
+.card22 {
+    background-image: url(../css/img/22.jpg);
+     
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);
+}
+
+.card23 {
+    background-image: url(../css/img/23.jpg);
+     
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);
+}
+
+.card24 {
+    background-image: url(../css/img/24.jpg);
+     
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);
+}
+
+.card25 {
+    background-image: url(../css/img/25.jpg);
+     
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);
+}
+
+.card26 {
+    background-image: url(../css/img/26.jpg);
+     
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);
+}
+
+.card27 {
+    background-image: url(../css/img/27.jpg);
+     
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);
+}
+
+.card28 {
+    background-image: url(../css/img/28.jpg);
+     
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);
+}
+
+.card29 {
+    background-image: url(../css/img/29.jpg);
+     
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);
+}
+
+.card30 {
+    background-image: url(../css/img/30.jpg);
+     
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);
+}
+
+.card31 {
+    background-image: url(../css/img/31.jpg);
+     
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);
+}
+
+.card32 {
+    background-image: url(../css/img/32.jpg);
+     
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);
+}
+
+
