@@ -1,31 +1,48 @@
-const medidaModel = require("../models/medidaModel");
-const database = require("../database/config"); // Certifique-se de que o caminho para o módulo de configuração do banco de dados está correto
+const database = require("../database/config");
 
 const getResumo = (usuarioId, quiz) => {
-  try {
     const instrucaoSql = `
-            SELECT 
-                idPontuacao, 
-                qtdAcertos 
-            FROM 
-                pontuacao 
-            WHERE 
-                fkUsuario = ${usuarioId} AND 
-                fkQuiz = ${quiz}
-            ORDER BY 
-                idPontuacao;
-        `;
+        SELECT 
+            idPontuacao, 
+            qtdAcertos 
+        FROM 
+            pontuacao 
+        WHERE 
+            fkUsuario = ${usuarioId} AND 
+            fkQuiz = ${quiz}
+        ORDER BY 
+            idPontuacao;
+    `;
+    return database.executar(instrucaoSql);
+};
 
-    const resultado = database.executar(instrucaoSql);
-
-    return resultado;
-  } catch (erro) {
-    console.log(erro);
-    console.log("Houve um erro ao buscar o resumo.", erro.sqlMessage);
-    return [];
-  }
+const getRanking = (quizId) => {
+    const instrucaoSql = `
+        SELECT 
+            u.nome, 
+            p.maxAcertos 
+        FROM 
+            (
+                SELECT 
+                    fkUsuario, 
+                    MAX(qtdAcertos) AS maxAcertos 
+                FROM 
+                    pontuacao 
+                WHERE 
+                    fkQuiz = ${quizId}
+                GROUP BY 
+                    fkUsuario
+            ) AS p 
+            JOIN usuario AS u ON p.fkUsuario = u.id 
+        ORDER BY 
+            p.maxAcertos DESC, 
+            u.id ASC 
+        LIMIT 3;
+    `;
+    return database.executar(instrucaoSql);
 };
 
 module.exports = {
-  getResumo
+    getResumo,
+    getRanking
 };

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Potterverse | Ranking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .ranking-container {
+            width: 80%;
+            max-width: 600px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        select {
+            margin-bottom: 20px;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="ranking-container">
+        <h1>Ranking Top 3</h1>
+        <select id="quizSelect">
+            <option value="0">Selecione um quiz</option>
+            <option value="1">Quiz de Personagens</option>
+            <option value="2">Quiz de Lugares</option>
+            <option value="3">Quiz de Acontecimentos</option>
+        </select>
+        <table id="rankingTable">
+            <thead>
+                <tr>
+                    <th>Posição</th>
+                    <th>Nome</th>
+                    <th>Pontuação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Conteúdo dinâmico será inserido aqui -->
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
+
+<script>
+  window.addEventListener('load', () => {
+    const quizSelect = document.getElementById('quizSelect');
+    const rankingTableBody = document.getElementById('rankingTable').getElementsByTagName('tbody')[0];
+
+    quizSelect.addEventListener('change', () => {
+        const quizId = quizSelect.value;
+        if (quizId === '0') {
+            alert('Selecione um quiz para visualizar o ranking.');
+            return;
+        }
+
+        fetch(`/medidas/ranking/${quizId}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log('Dados recebidos:', data); // Adicionar log para depuração
+                rankingTableBody.innerHTML = '';
+
+                if (!Array.isArray(data) || data.length === 0) {
+                    const row = rankingTableBody.insertRow();
+                    const cell = row.insertCell(0);
+                    cell.colSpan = 3;
+                    cell.innerText = 'Nenhuma pontuação encontrada para este quiz.';
+                    cell.style.textAlign = 'center';
+                    return;
+                }
+
+                data.forEach((item, index) => {
+                    const row = rankingTableBody.insertRow();
+                    const cellPosicao = row.insertCell(0);
+                    const cellNome = row.insertCell(1);
+                    const cellPontuacao = row.insertCell(2);
+
+                    cellPosicao.innerText = index + 1;
+                    cellNome.innerText = item.nome;
+                    cellPontuacao.innerText = item.maxAcertos;
+                });
+            })
+            .catch(error => {
+                console.error('Erro ao buscar o ranking:', error);
+            });
+    });
+});
+
+
+</script>

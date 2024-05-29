@@ -2,118 +2,118 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz</title>
-    <link rel="stylesheet" href="./../css/estilo.css" />
-    <link rel="stylesheet" href="./../css/dashboards.css" />
-    <link rel="stylesheet" href="./../css/quiz.css" /> <!-- Link para o arquivo CSS externo -->
-    <script src="../js/sessao.js"></script>
-    <script src="./../js/alerta.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz</title>
+  <link rel="stylesheet" href="./../css/estilo.css" />
+  <link rel="stylesheet" href="./../css/dashboards.css" />
+  <link rel="stylesheet" href="./../css/quiz.css" /> <!-- Link para o arquivo CSS externo -->
+  <script src="../js/sessao.js"></script>
+  <script src="./../js/alerta.js"></script>
 </head>
 
-<body onload="validarSessao(), listarInfosDeUm()"></body>
+<body onload="validarSessao(), listarInfosDeUm()">
 
-    <div class="janela">
-        <div class="header-left">
+  <div class="janela">
+    <div class="header-left">
 
-            <img class="logoHeader" src="../css/img/imagens-de-oculos-harry-potter-png-1.png" alt="">
+      <img class="logoHeader" src="../css/img/imagens-de-oculos-harry-potter-png-1.png" alt="">
 
-            <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
-            </div>
-            <button class="btnn" type="button" onclick="redirecionarConteudo()">
-                <strong>PotterVerse</strong>
-                <div id="container-stars">
-                  <div id="stars"></div>
-                </div>
-              
-                <div id="glow">
-                  <div class="circle"></div>
-                  <div class="circle"></div>
-                </div>
-              </button>
-              <button class="btnn" type="button" onclick="redirecionarDash()">
-                <strong>DashBoard</strong>
-                <div id="container-stars">
-                  <div id="stars"></div>
-                </div>
-              
-                <div id="glow">
-                  <div class="circle"></div>
-                  <div class="circle"></div>
-                </div>
-              </button>
-              <button class="btnn" type="button" onclick="redirecionarQuiz()">
-                <strong>Quizzes</strong>
-                <div id="container-stars">
-                  <div id="stars"></div>
-                </div>
-              
-                <div id="glow">
-                  <div class="circle"></div>
-                  <div class="circle"></div>
-                </div>
-              </button>
-
-              <button class="btnn" type="button" onclick="redirecionarMural()">
-                
-                <strong>Mural de Discussão</strong>
-                <div id="container-stars">
-                  <div id="stars"></div>
-                </div>
-              
-                <div id="glow">
-                  <div class="circle"></div>
-                  <div class="circle"></div>
-                </div>
-              </button>
-
-            
-              <button class="btnn" type="button" onclick="limparSessao()" >
-                <strong>Sair</strong>
-                <div id="container-stars">
-                  <div id="stars"></div>
-                </div>
-                <div id="glow">
-                  <div class="circle"></div>
-                  <div class="circle"></div>
-                </div>
-              </button>
-            
+      <div class="hello">
+        <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+      </div>
+      <button class="btnn" type="button" onclick="redirecionarConteudo()">
+        <strong>PotterVerse</strong>
+        <div id="container-stars">
+          <div id="stars"></div>
         </div>
-    </div>
 
-<div class="dash-right" style="justify-items: center;">
+        <div id="glow">
+          <div class="circle"></div>
+          <div class="circle"></div>
+        </div>
+      </button>
+      <button class="btnn" type="button" onclick="redirecionarDash()">
+        <strong>DashBoard</strong>
+        <div id="container-stars">
+          <div id="stars"></div>
+        </div>
+
+        <div id="glow">
+          <div class="circle"></div>
+          <div class="circle"></div>
+        </div>
+      </button>
+      <button class="btnn" type="button" onclick="redirecionarQuiz()">
+        <strong>Quizzes</strong>
+        <div id="container-stars">
+          <div id="stars"></div>
+        </div>
+
+        <div id="glow">
+          <div class="circle"></div>
+          <div class="circle"></div>
+        </div>
+      </button>
+
+      <button class="btnn" type="button" onclick="redirecionarMural()">
+
+        <strong>Mural de Discussão</strong>
+        <div id="container-stars">
+          <div id="stars"></div>
+        </div>
+
+        <div id="glow">
+          <div class="circle"></div>
+          <div class="circle"></div>
+        </div>
+      </button>
+
+
+      <button class="btnn" type="button" onclick="limparSessao()">
+        <strong>Sair</strong>
+        <div id="container-stars">
+          <div id="stars"></div>
+        </div>
+        <div id="glow">
+          <div class="circle"></div>
+          <div class="circle"></div>
+        </div>
+      </button>
+
+    </div>
+  </div>
+
+  <div class="dash-right" style="justify-items: center;">
 
     <section id="seila">
-        <div class="container">
-            <a href="sobre.html" class="card-link">
-                <div class="conteudo">
-                    <h2 style=" text-shadow: 2px 2px 4px rgba(0, 0, 0, 2);">Venha conhecer mais sobre Harry Potter! </h2>
-                </div>
-            </a>
-        </div>
-    </section> 
-</div>
+      <div class="container">
+        <a href="sobre.html" class="card-link">
+          <div class="conteudo">
+            <h2 style=" text-shadow: 2px 2px 4px rgba(0, 0, 0, 2);">Venha conhecer mais sobre Harry Potter! </h2>
+          </div>
+        </a>
+      </div>
+    </section>
+  </div>
 </body>
 
 </html>
 
 <script>
-     function redirecionarMural(){
-        window.location.href = "mural.html"
-    }
+  function redirecionarMural() {
+    window.location.href = "mural.html"
+  }
 
-    function redirecionarQuiz(){
-        window.location.href = "quiz.html"
-    }
+  function redirecionarQuiz() {
+    window.location.href = "quiz.html"
+  }
 
-    function redirecionarDash(){
-        window.location.href = "dash.html"
-    }
+  function redirecionarDash() {
+    window.location.href = "dash.html"
+  }
 
-    function redirecionarConteudo(){
-        window.location.href = "conteudo.html"
-    } 
+  function redirecionarConteudo() {
+    window.location.href = "conteudo.html"
+  } 
 </script>

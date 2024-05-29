@@ -8,7 +8,7 @@
 </head>
 <body>
 
-  <div class="quiz-container">
+  <div id="quiz-container" class="quiz-container">
     <div class="question" id="question"></div>
     <ul class="options" id="options">
       <li><button onclick="responder(0)">A</button></li>
@@ -79,6 +79,10 @@
           question.innerHTML = 'Quiz terminado!';
           options.style.display = 'none';
           score.innerHTML = 'Sua pontuação: ' + pontuacao3 + ' de ' + perguntas.length;
+
+          var quizContainer = document.getElementById('quiz-container');
+          quizContainer.style.marginTop = '40vh';
+
 
           var qtdAcertosVar = pontuacao3;
           var fkQuizVar = 3;
