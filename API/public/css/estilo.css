@@ -717,12 +717,15 @@ strong {
   background: #FE53BB;
 }
 
+
 #stars {
   position: relative;
   background: transparent;
   width: 200rem;
   height: 200rem;
 }
+
+/* Estrelas Rotativas */
 
 #stars::after {
   content: "";
@@ -738,6 +741,8 @@ strong {
   background-image: radial-gradient(#ffffff 1px, transparent 1%);
   background-size: 50px 50px;
 }
+
+/* Estrelas em Movimento Vertical */
 
 #stars::before {
   content: "";
@@ -755,25 +760,31 @@ strong {
   opacity: 0.5;
 }
 
+/* Movimento Vertical das Estrelas */
+
 @keyframes animStar {
   from {
     transform: translateY(0);
   }
 
   to {
-    transform: translateY(-135rem);
+    transform: translateY(-135rem); /* definir distâncias e tamanhos relativos à raiz (root), ou seja, ao elemento <html> */
   }
 }
 
+/* Rotação das Estrelas */
+
 @keyframes animStarRotate {
   from {
-    transform: rotate(360deg);
+    transform: rotate(360deg); /* Animação de rotação onde o elemento gira de 360 graus */
   }
 
   to {
     transform: rotate(0);
   }
 }
+
+/* Animação de Gradiente do Fundo do Botão */
 
 @keyframes gradient_301 {
   0% {
