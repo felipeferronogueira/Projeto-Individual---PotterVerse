@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
     <meta charset="UTF-8">
@@ -16,6 +17,7 @@
             height: 100vh;
             margin: 0;
         }
+
         .ranking-container {
             width: 80%;
             max-width: 600px;
@@ -25,22 +27,28 @@
             padding: 20px;
             text-align: center;
         }
+
         h1 {
             font-size: 24px;
             margin-bottom: 20px;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
         }
-        th, td {
+
+        th,
+        td {
             padding: 10px;
             border: 1px solid #ddd;
         }
+
         th {
             background-color: #f4f4f4;
         }
+
         select {
             margin-bottom: 20px;
             padding: 10px;
@@ -48,6 +56,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="ranking-container">
         <h1>Ranking Top 3</h1>
@@ -65,43 +74,43 @@
                     <th>Pontuação</th>
                 </tr>
             </thead>
-            <tbody>
-                <!-- Conteúdo dinâmico será inserido aqui -->
-            </tbody>
+            <tbody></tbody>
         </table>
     </div>
 </body>
+
 </html>
 
 
 <script>
-  window.addEventListener('load', () => {
-    const quizSelect = document.getElementById('quizSelect');
-    const rankingTableBody = document.getElementById('rankingTable').getElementsByTagName('tbody')[0];
+    window.addEventListener('load', () => {
+        const quizSelect = document.getElementById('quizSelect');
+        const rankingTableBody = document.getElementById('rankingTable').getElementsByTagName('tbody')[0];
 
-    quizSelect.addEventListener('change', () => {
-        const quizId = quizSelect.value;
-        if (quizId === '0') {
-            alert('Selecione um quiz para visualizar o ranking.');
-            return;
-        }
+        quizSelect.addEventListener('change', () => {
+            const quizId = quizSelect.value;
+            if (quizId === '0') {
+                alert('Selecione um quiz para visualizar o ranking.');
+                return;
+            }
 
-        fetch(`/medidas/ranking/${quizId}`)
-            .then(response => response.json())
-            .then(data => {
-                console.log('Dados recebidos:', data); // Adicionar log para depuração
-                rankingTableBody.innerHTML = '';
+            fetch(`/medidas/ranking/${quizId}`)
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Dados recebidos:', data); // Adicionar log para depuração
+                    rankingTableBody.innerHTML = '';
 
-                if (!Array.isArray(data) || data.length === 0) {
-                    const row = rankingTableBody.insertRow();
-                    const cell = row.insertCell(0);
-                    cell.colSpan = 3;
-                    cell.innerText = 'Nenhuma pontuação encontrada para este quiz.';
-                    cell.style.textAlign = 'center';
-                    return;
-                }
+                    if (!Array.isArray(data) || data.length === 0) {
+                        const row = rankingTableBody.insertRow();
+                        const cell = row.insertCell(0);
+                        cell.colSpan = 3;
+                        cell.innerText = 'Nenhuma pontuação encontrada para este quiz.';
+                        cell.style.textAlign = 'center';
+                        return;
+                    }
 
-                data.forEach((item, index) => {
+                    for (let index = 0; index < data.length; index++) {
+                    const item = data[index];
                     const row = rankingTableBody.insertRow();
                     const cellPosicao = row.insertCell(0);
                     const cellNome = row.insertCell(1);
@@ -110,7 +119,7 @@
                     cellPosicao.innerText = index + 1;
                     cellNome.innerText = item.nome;
                     cellPontuacao.innerText = item.maxAcertos;
-                });
+                }
             })
             .catch(error => {
                 console.error('Erro ao buscar o ranking:', error);

@@ -211,7 +211,8 @@ body {
 
 .ban h1 {
   font-family: 'Cinzel', serif;
-  margin-top: 12vh;;
+  margin-top: 12vh;
+  ;
   font-size: 3em;
   background: linear-gradient(150deg, #AE8625 1%, #ebe597 5%, #dab551 30%);
   background-clip: text;
@@ -258,7 +259,7 @@ body {
 
 /* MISSÃO VISÃO VALORES */
 
-.alone{
+.alone {
   font-family: 'Cinzel', serif;
   font-size: 3em;
   margin-top: 40px;
@@ -312,7 +313,7 @@ body {
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.timeline-content:hover{
+.timeline-content:hover {
   transform: scale(1.05);
 }
 
@@ -456,13 +457,14 @@ body {
 .card_erro {
   display: none;
   background-color: #fff;
-  color: rgba(0, 0, 0, 0.562);
+  color: rgb(0 0 0 / 88%);
   width: 230px;
   position: fixed;
   margin-bottom: 100px;
   border-radius: 4px;
   padding: 10px;
-  margin-right: 10%;
+  margin-right: 78.5%;
+  margin-top: 16vh;
 }
 
 .card_erro #mensagem_erro {

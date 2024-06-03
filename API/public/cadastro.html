@@ -156,7 +156,7 @@
       mensagem_erro.innerHTML += `O email deve conter no minimo 1 '@ 'e 1 '.'<br>`;
       finalizarAguardar();
       return false;
-    } else if (tamanho_senha <= 6) {
+    } else if (tamanho_senha < 6) {
       cardErro.style.display = 'Block'
       mensagem_erro.innerHTML += `A senha deve ter no minimo 6 letras/digitos<br>`;
       finalizarAguardar();

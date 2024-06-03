@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaTech | Página Inicial</title>
+    <title>PotterVerse | Edição de Posts</title>
 
     
     <link rel="stylesheet" href="./../css/dashboards.css">
@@ -20,7 +20,6 @@
 </head>
 
 <body onload="validarSessao(), listarInfosDeUm()">
-    <!-- <body onload="validarSessao()"> -->
 
         <div class="janela">
             <div class="header-left">
@@ -99,21 +98,9 @@
                     <h1>Editar um aviso</h1>
                     <div class="div-form">
                         <label>
-                            ID:
-                            <br>
-                            <input id="input_id" maxlength="100" type="text" style="color: rgb(196, 196, 196)" disabled>
-                        </label>
-                        <label>
-                            Autor:
-                            <br>
-                            <input id="input_nome" maxlength="100" type="text" style="color: rgb(196, 196, 196)"
-                                disabled>
-                        </label>
-                        <label>
                             Título:
                             <br>
-                            <input id="input_titulo" maxlength="100" type="text" style="color: rgb(196, 196, 196)"
-                                disabled>
+                            <input id="input_titulo" maxlength="100" type="text" style="color: rgb(196, 196, 196)" disabled>
                         </label>
                         <br>
                         <label>
@@ -124,7 +111,6 @@
                         <br>
                         <button onclick="editar()">Editar</button>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -141,7 +127,7 @@
     }
 
     function editar() {
-        fetch(`/avisos/editar/${getItem("ID_POSTAGEM_EDITANDO")}`, {
+        fetch(`/avisos/editar/${sessionStorage.getItem("ID_POSTAGEM_EDITANDO")}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -152,7 +138,7 @@
         }).then(function (resposta) {
 
             if (resposta.ok) {
-                window.alert("Post atualizado com sucesso pelo usuario de email: " + getItem("EMAIL_USUARIO") + "!");
+                window.alert("Post atualizado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
                 window.location = "/dashboard/mural.html"
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
