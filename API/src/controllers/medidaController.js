@@ -10,6 +10,7 @@ function getResumo(req, res) {
             idPontuacao: item.idPontuacao,
             acertos: item.qtdAcertos
         }));
+        // Cria um novo array labels onde cada item é uma string representando a tentativa com base no índice.
         res.status(200).json(resumo);
       })
       .catch(erro => {
@@ -23,7 +24,7 @@ function getRanking(req, res) {
 
     medidaModel.getRanking(quizId)
       .then(resultado => {
-          console.log('Resultado do getRanking:', resultado); // Adicionar log para depuração
+          console.log('Resultado do getRanking:', resultado); 
           res.status(200).json(resultado);
       })
       .catch(erro => {
