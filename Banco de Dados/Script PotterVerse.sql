@@ -5,7 +5,7 @@ use potterverse;
 CREATE TABLE casaHogwarts (
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	casa varchar(15),
-  constraint chkCasa check (casa in ('Sonserina','Grifinoria','Corvinal','Lufa-Lufa'))
+    constraint chkCasa check (casa in ('Sonserina','Grifinoria','Corvinal','Lufa-Lufa'))
 );
 
 CREATE TABLE usuario (
@@ -18,7 +18,11 @@ CREATE TABLE usuario (
 	FOREIGN KEY (fkcasa) REFERENCES casaHogwarts(id)
 );
 
+select * from usuario as u join casaHogwarts as c on u.fkcasa = c.id ;
+
 select * from usuario;
+
+select u.id, u.nome, u.cpf, u.email, u.senha, u.fkcasa, c.casa from usuario as u join casaHogwarts as c on u.fkcasa = c.id ;
 
 select * from casaHogwarts;
 
@@ -26,7 +30,7 @@ insert into casaHogwarts values
 (default , 'Grifinoria'),
 (default , 'Sonserina'),
 (default , 'Corvinal'),
-(default , 'Lufa-Lufa');
+(default , 'lufa-Lufa');
 
 select * from casaHogwarts;
 
@@ -39,6 +43,8 @@ CREATE TABLE aviso (
 );
 
 select * from aviso;
+
+select * from aviso as a join usuario as u on a.fk_usuario = u.id;
 
 create table quiz(
 idQuiz int primary key,
@@ -61,3 +67,47 @@ primary key (idPontuacao, fkQuiz, fkUsuario)
 );
 
 select * from pontuacao join usuario on fkUsuario = id order by qtdAcertos desc;
+
+select * from pontuacao;
+
+select qtdAcertos from pontuacao;
+
+insert into pontuacao values
+(default, 7, 1, 1),
+(default, 6, 2, 1),
+(default, 5, 3, 1),
+(default, 10, 3, 1),
+(default, 2, 2, 1),
+(default, 4, 1, 1);
+
+insert into pontuacao values
+(default, 1, 3, 1),
+(default, 3, 1, 1),
+(default, 4, 2, 1),
+(default, 0, 1, 1),
+(default, 9, 3, 1),
+(default, 8, 2, 1);
+
+insert into pontuacao values
+(default, 1, 3, 1),
+(default, 3, 1, 1),
+(default, 4, 2, 1),
+(default, 10, 1, 1),
+(default, 9, 3, 1),
+(default, 8, 2, 1),
+(default, 1, 3, 1),
+(default, 3, 1, 1),
+(default, 4, 2, 1),
+(default, 0, 1, 1),
+(default, 9, 3, 1),
+(default, 8, 2, 1);
+
+
+insert into pontuacao values
+(default, 10, 1, 2),
+(default, 10, 2, 2),
+(default, 10, 3, 2);
+
+insert into pontuacao values
+(default, 10, 2, 1);
+
