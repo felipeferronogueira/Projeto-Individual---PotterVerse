@@ -6,77 +6,129 @@
     <title>Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('../css/img/yellow.jpg');
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        #chartContainer {
+            background-color: rgba(0, 0, 0, 0.816);
+            position: relative;
+            width: 80%;
+            max-width: 800px;
+            text-align: center; 
+            color: white; 
+            border-radius: 8px; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+            padding: 20px; 
+            margin-top: 50px; 
+        }
+
+        #chartText {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px; 
+        }
+
+    </style>
 </head>
 <body>
-    <div style="width: 50%;">
+    <div id="chartContainer">
+        <div id="chartText">Usuários por Casa</div>
         <canvas id="myChart"></canvas>
     </div>
 
     <script>
         window.addEventListener('load', () => {
-        fetch('/api/usuariosPorCasa')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Erro ao buscar dados de usuários por casa');
-            }
-            return response.json();
-        })
-        .then(usuariosPorCasa => {
-            const labels = usuariosPorCasa.map(casa => {
-                switch (casa.fkCasa) {
-                    case 1:
-                        return 'Grifinória';
-                    case 2:
-                        return 'Sonserina';
-                    case 3:
-                        return 'Corvinal';
-                    case 4:
-                        return 'Lufa-Lufa';
-                    default:
-                        return '';
+            fetch('/api/usuariosPorCasa')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erro ao buscar dados de usuários por casa');
                 }
-            });
+                return response.json();
+            })
+            .then(usuariosPorCasa => {
+                const labels = usuariosPorCasa.map(casa => {
+                    switch (casa.fkCasa) {
+                        case 1:
+                            return 'Grifinória';
+                        case 2:
+                            return 'Sonserina';
+                        case 3:
+                            return 'Corvinal';
+                        case 4:
+                            return 'Lufa-Lufa';
+                        default:
+                            return '';
+                    }
+                });
 
-            const valores = usuariosPorCasa.map(casa => casa.total);
+                const valores = usuariosPorCasa.map(casa => casa.total);
 
-            const ctx = document.getElementById('myChart').getContext('2d');
-            const myChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Usuários por Casa',
-                        data: valores,
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
+                const ctx = document.getElementById('myChart').getContext('2d');
+                const myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Usuários por Casa',
+                            data: valores,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(34, 168, 0, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                '#04ff00',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#fff' // Cor das legendas
+                            }
+                        }
+                    },
                     scales: {
+                        x: {
+                            ticks: {
+                                color: '#fff' // Cor dos rótulos do eixo x
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.25)' // Cor da grade do eixo x
+                            }
+                        },
                         y: {
-                            beginAtZero: true
+                            ticks: {
+                                color: '#fff' // Cor dos rótulos do eixo y
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.25)' // Cor da grade do eixo y
+                            }
                         }
                     }
                 }
+                });
+            })
+            .catch(error => {
+                console.error('Erro ao buscar dados de usuários por casa:', error);
             });
-        })
-        .catch(error => {
-            console.error('Erro ao buscar dados de usuários por casa:', error);
         });
-});
-
     </script>
 </body>
 </html>
- 

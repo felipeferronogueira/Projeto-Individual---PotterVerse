@@ -5,30 +5,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaTech | Dashboards</title>
+    <title>Dashboards</title>
     <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="../css/dash.css">
 </head>
 <body>
-    
-    <select id="quizSelect">
-        <option value="0">Selecione um quiz</option>
-        <option value="1">Quiz de Personagens</option>
-        <option value="2">Quiz de Lugares</option>
-        <option value="3">Quiz de Acontecimentos</option>
-    </select>
-    
-    <div class="dash" style="width: 50%; border-radius: 5px; background-color: rgba(0, 0, 0, 0.788);">
-        <canvas id="myChart"></canvas>
+    <div class="container">
+        <select id="quizSelect" class="styled-select">
+            <option value="0">Selecione um quiz</option>
+            <option value="1">Quiz de Personagens</option>
+            <option value="2">Quiz de Lugares</option>
+            <option value="3">Quiz de Acontecimentos</option>
+        </select>
+        
+        <div class="dash">
+            <canvas id="myChart"></canvas>
+        </div>
     </div>
-    
+
     <script>
         var chartInstance = null;
 
         window.addEventListener('load', () => {
-
             const quizSelect = document.getElementById('quizSelect');
             
             quizSelect.addEventListener('change', () => {
@@ -53,7 +54,6 @@
             });
         });
 
-        
         async function getResumo(usuarioId, quiz) {
             const response = await fetch(`/medidas/resumo/${usuarioId}/${quiz}`);
             if (!response.ok) {
@@ -84,7 +84,7 @@
                 labels.push(`Tentativa ${i + 1}`);
             }
 
-            console.log(labels);
+            console.log(labels); 
             
             chartInstance = new Chart(ctx, {
                 type: 'bar',
@@ -93,21 +93,41 @@
                     datasets: [{
                         label: 'Acertos',
                         data: acertos,
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
+                        backgroundColor: 'rgba(34, 168, 0, 0.2)',
+                        borderColor: '#04ff00',
                         borderWidth: 1
                     }, {
                         label: 'Erros',
                         data: erros,
                         backgroundColor: 'rgba(199, 52, 52, 0.2)',
-                        borderColor: 'rgba(199, 52, 52, 1)',
+                        borderColor: 'red',
                         borderWidth: 1
                     }]
                 },
                 options: {
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#fff' // Cor das legendas
+                            }
+                        }
+                    },
                     scales: {
+                        x: {
+                            ticks: {
+                                color: '#fff' // Cor dos rótulos do eixo x
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.25)' // Cor da grade do eixo x
+                            }
+                        },
                         y: {
-                            beginAtZero: true
+                            ticks: {
+                                color: '#fff' // Cor dos rótulos do eixo y
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.25)' // Cor da grade do eixo y
+                            }
                         }
                     }
                 }

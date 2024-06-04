@@ -9,23 +9,50 @@
     <title>Potterverse | Ranking</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            font-family: 'Exo 2', sans-serif;
+            background-image: url(../css/img/yellow.jpg);
+            background-size: cover;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .styled-select {
+            display: block;
+            width: 300px;
+            padding: 10px;
+            font-size: 1.2rem;
+            color: #fff;
+            background-color: #212121;
+            border: 2px solid #444;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin: 0 auto 20px auto; /* Centraliza e adiciona margem inferior */
+        }
+
+        .styled-select:hover {
+            background-color: #333;
+        }
+
+        .styled-select:focus {
+            outline: none;
+            border-color: #888;
         }
 
         .ranking-container {
             width: 80%;
             max-width: 600px;
-            background-color: #fff;
+            background-color: rgba(0, 0, 0, 0.816);
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             padding: 20px;
             text-align: center;
+            color: #fff;
         }
 
         h1 {
@@ -37,6 +64,7 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            color: #fff;
         }
 
         th,
@@ -46,13 +74,32 @@
         }
 
         th {
-            background-color: #f4f4f4;
+            background-color: #444;
+        }
+
+        td {
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
         select {
             margin-bottom: 20px;
             padding: 10px;
             font-size: 16px;
+            color: #fff;
+            background-color: #212121;
+            border: 2px solid #444;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        select:hover {
+            background-color: #333;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #888;
         }
     </style>
 </head>
@@ -60,7 +107,7 @@
 <body>
     <div class="ranking-container">
         <h1>Ranking Top 3</h1>
-        <select id="quizSelect">
+        <select id="quizSelect" class="styled-select">
             <option value="0">Selecione um quiz</option>
             <option value="1">Quiz de Personagens</option>
             <option value="2">Quiz de Lugares</option>
@@ -77,55 +124,52 @@
             <tbody></tbody>
         </table>
     </div>
+
+    <script>
+        window.addEventListener('load', () => {
+            const quizSelect = document.getElementById('quizSelect');
+            const rankingTableBody = document.getElementById('rankingTable').getElementsByTagName('tbody')[0];
+
+            quizSelect.addEventListener('change', () => {
+                const quizId = quizSelect.value;
+                if (quizId === '0') {
+                    alert('Selecione um quiz para visualizar o ranking.');
+                    return;
+                }
+
+                fetch(`/medidas/ranking/${quizId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Dados recebidos:', data); // Adicionar log para depuração
+                        rankingTableBody.innerHTML = '';
+
+                        if (!Array.isArray(data) || data.length === 0) {
+                            const row = rankingTableBody.insertRow();
+                            const cell = row.insertCell(0);
+                            cell.colSpan = 3;
+                            cell.innerText = 'Nenhuma pontuação encontrada para este quiz.';
+                            cell.style.textAlign = 'center';
+                            return;
+                        }
+
+                        for (let index = 0; index < data.length; index++) {
+                            const item = data[index];
+                            const row = rankingTableBody.insertRow();
+                            const cellPosicao = row.insertCell(0);
+                            const cellNome = row.insertCell(1);
+                            const cellPontuacao = row.insertCell(2);
+
+                            cellPosicao.innerText = index + 1;
+                            cellNome.innerText = item.nome;
+                            cellPontuacao.innerText = item.maxAcertos;
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erro ao buscar o ranking:', error);
+                    });
+            });
+        });
+    </script>
 </body>
 
 </html>
-
-
-<script>
-    window.addEventListener('load', () => {
-        const quizSelect = document.getElementById('quizSelect');
-        const rankingTableBody = document.getElementById('rankingTable').getElementsByTagName('tbody')[0];
-
-        quizSelect.addEventListener('change', () => {
-            const quizId = quizSelect.value;
-            if (quizId === '0') {
-                alert('Selecione um quiz para visualizar o ranking.');
-                return;
-            }
-
-            fetch(`/medidas/ranking/${quizId}`)
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Dados recebidos:', data); // Adicionar log para depuração
-                    rankingTableBody.innerHTML = '';
-
-                    if (!Array.isArray(data) || data.length === 0) {
-                        const row = rankingTableBody.insertRow();
-                        const cell = row.insertCell(0);
-                        cell.colSpan = 3;
-                        cell.innerText = 'Nenhuma pontuação encontrada para este quiz.';
-                        cell.style.textAlign = 'center';
-                        return;
-                    }
-
-                    for (let index = 0; index < data.length; index++) {
-                    const item = data[index];
-                    const row = rankingTableBody.insertRow();
-                    const cellPosicao = row.insertCell(0);
-                    const cellNome = row.insertCell(1);
-                    const cellPontuacao = row.insertCell(2);
-
-                    cellPosicao.innerText = index + 1;
-                    cellNome.innerText = item.nome;
-                    cellPontuacao.innerText = item.maxAcertos;
-                }
-            })
-            .catch(error => {
-                console.error('Erro ao buscar o ranking:', error);
-            });
-    });
-});
-
-
-</script>
