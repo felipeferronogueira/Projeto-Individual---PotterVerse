@@ -12,7 +12,7 @@ insert into casaHogwarts values
 (default , 'Grifinoria'),
 (default , 'Sonserina'),
 (default , 'Corvinal'),
-(default , 'lufa-Lufa');
+(default , 'Lufa-Lufa');
 
 CREATE TABLE usuario (
 	id INT PRIMARY KEY AUTO_INCREMENT,

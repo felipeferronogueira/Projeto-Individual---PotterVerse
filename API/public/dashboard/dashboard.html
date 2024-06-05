@@ -72,6 +72,8 @@
 
             const acertos = [];
             const erros = [];
+
+            console.log(resumo);
             
             for (let i = 0; i < resumo.length; i++) {
                 const item = resumo[i];
@@ -95,7 +97,7 @@
                         data: acertos,
                         backgroundColor: 'rgba(34, 168, 0, 0.2)',
                         borderColor: '#04ff00',
-                        borderWidth: 1
+                        borderWidth: 1 
                     }, {
                         label: 'Erros',
                         data: erros,
