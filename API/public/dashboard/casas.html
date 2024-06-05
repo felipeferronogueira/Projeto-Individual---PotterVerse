@@ -6,39 +6,7 @@
     <title>Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-image: url('../css/img/yellow.jpg');
-            background-size: cover;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            padding: 0;
-        }
-
-        #chartContainer {
-            background-color: rgba(0, 0, 0, 0.816);
-            position: relative;
-            width: 80%;
-            max-width: 800px;
-            text-align: center; 
-            color: white; 
-            border-radius: 8px; 
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
-            padding: 20px; 
-            margin-top: 50px; 
-        }
-
-        #chartText {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 20px; 
-        }
-
-    </style>
+    <link rel="stylesheet" href="../css/casas.css">
 </head>
 <body>
     <div id="chartContainer">
@@ -75,11 +43,11 @@
 
                 const ctx = document.getElementById('myChart').getContext('2d');
                 const myChart = new Chart(ctx, {
-                    type: 'bar',
+                    type: 'pie',
                     data: {
                         labels: labels,
                         datasets: [{
-                            label: 'Usuários por Casa',
+                            label: 'grifinória, Sonserina, Corvinal, Lufa-Lufa',
                             data: valores,
                             backgroundColor: [
                                 'rgba(255, 99, 132, 0.2)',

@@ -9,6 +9,10 @@ function getResumo(req, res) {
         const resumo = resultado.map(item => ({
             idPontuacao: item.idPontuacao,
             acertos: item.qtdAcertos
+            //Então, o que o código está fazendo é basicamente percorrer cada elemento do array resultado, 
+            //criar um novo objeto para cada elemento com as chaves idPontuacao e acertos, e armazenar esses
+            //objetos em um novo array chamado resumo. Ao final da operação, resumo conterá uma representação 
+            //transformada dos dados originais, adequada para ser enviada como resposta JSON para o cliente que fez a solicitação.
         }));
         // Cria um novo array labels onde cada item é uma string representando a tentativa com base no índice.
         res.status(200).json(resumo);
