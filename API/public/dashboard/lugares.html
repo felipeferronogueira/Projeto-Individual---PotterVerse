@@ -17,6 +17,7 @@
       <li><button onclick="responder(3)">D</button></li>
     </ul>
     <div class="score" id="score"></div>
+    <div id="dashboardButtonContainer"></div> 
   </div>
 
   <script>
@@ -95,8 +96,17 @@
               fkUsuarioServer: fkUsuarioVar
             }),
           });
+
+          var optionsContainer = document.getElementById('options');
+          optionsContainer.parentNode.removeChild(optionsContainer);
+
+          var btnDashboard = document.createElement('a');
+          btnDashboard.href = 'dashboard.html';
+          btnDashboard.textContent = 'Veja suas pontuações';
+          btnDashboard.classList.add('next-button');
+          document.getElementById('dashboardButtonContainer').appendChild(btnDashboard);
         }
-      }, 1000);
+      }, 300);
     }
     
     mostrarPergunta();

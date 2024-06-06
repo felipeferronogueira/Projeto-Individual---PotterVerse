@@ -21,6 +21,7 @@
       <li><button onclick="responder(3)">D</button></li>
     </ul>
     <div class="score" id="score"></div>
+    <div id="dashboardButtonContainer"></div> 
   </div>
 
   <script>
@@ -98,6 +99,7 @@
           options.style.display = 'none';
           score.innerHTML = 'Sua pontuação: ' + pontuacao1 + ' de ' + perguntas.length;
           document.getElementById('image').style.display = 'none';
+          document.getElementsByClassName('quiz-container')[0].style.marginTop = '38vh';
 
           var qtdAcertosVar = pontuacao1;
           var fkQuizVar = 1;
@@ -116,8 +118,17 @@
               fkUsuarioServer: fkUsuarioVar
             }),
           });
+
+          var optionsContainer = document.getElementById('options');
+          optionsContainer.parentNode.removeChild(optionsContainer);
+
+          var btnDashboard = document.createElement('a');
+          btnDashboard.href = 'dashboard.html';
+          btnDashboard.textContent = 'Veja suas pontuações';
+          btnDashboard.classList.add('next-button');
+          document.getElementById('dashboardButtonContainer').appendChild(btnDashboard);
         }
-      }, 1000);
+      }, 300);
     }
 
     mostrarPergunta();

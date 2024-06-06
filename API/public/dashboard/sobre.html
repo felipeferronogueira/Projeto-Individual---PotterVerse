@@ -9,6 +9,24 @@
 </head>
 
 <body>
+
+  <div class="header">
+    <div class="cont">
+      <div class="logo-container">
+        <img class="logoHeader" src="../css/img/imagens-de-oculos-harry-potter-png-1.png" alt="">
+      </div>
+      <ul class="navbar">
+        <li class="agora">
+          <a href="conteudo.html">Voltar</a>
+        </li>
+        <li>|</li>
+        <li>
+          <a href="../index.html">Sair</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
   <div class="bann">
     <div class="overlay"></div>
     <h1>Bem-vindo ao encantador mundo de Harry Potter,<br>
@@ -948,4 +966,33 @@
 </body>
 
 </html>
+
+<script>
+
+  let lastScrollTop = 0;
+  const header = document.querySelector(".header");
+
+  window.addEventListener("scroll", function () { //window é a pagina; addEventListener é uma acao que so acontece quando acontece um evento(nesse caso o scroll) e a function() é a function anonima que so opera dentro desse bloco;
+    let currentScroll = window.pageYOffset || document.documentElement.scrollTop; //window.PageYOffset é 
+    if (currentScroll > lastScrollTop) {
+      // Rolando para baixo
+      header.style.top = "-100px"; // Oculta o header devagar
+    } else {
+      // Rolando para cima
+      header.style.top = "0"; // Mostra o header devagar
+      header.style.backgroundColor = "rgba(0, 0, 0, 0)"; // Torna o cabeçalho branco
+      header.style.transition = "background-color 2s ease"; // Adiciona transição suave para a cor de fundo
+      header.style.color = "#000"
+    }
+
+    // Se o topo da página, permitindo alguma margem para variação, é alcançado, volte para transparente
+    if (currentScroll <= 10) {
+      header.style.backgroundColor = "rgba(255, 255, 255, 0)"; // Torna o cabeçalho transparente novament
+      header.style.transition = "background-color 2s ease"; // Adiciona transição suave para a cor de fundo
+    }
+
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Para lidar com rolagem para o topo
+  }, false);
+
+</script>
 

@@ -13,10 +13,11 @@
     <ul class="options" id="options">
       <li><button onclick="responder(0)">A</button></li>
       <li><button onclick="responder(1)">B</button></li>
-      <li><button onclick="responder(2)">C"></button></li>
+      <li><button onclick="responder(2)">C</button></li>
       <li><button onclick="responder(3)">D</button></li>
     </ul>
     <div class="score" id="score"></div>
+    <div id="dashboardButtonContainer"></div> 
   </div>
 
   <script>
@@ -93,15 +94,23 @@
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              // crie um atributo que recebe o valor recuperado aqui
-              // Agora vá para o arquivo routes/usuario.js
               qtdAcertosServer: qtdAcertosVar,
               fkQuizServer: fkQuizVar,
               fkUsuarioServer: fkUsuarioVar
             }),
           });
+
+          var quizContainer = document.getElementById('quiz-container');
+          quizContainer.style.marginTop = '35vh';
+
+          var btnDashboard = document.createElement('a');
+          btnDashboard.href = 'dashboard.html';
+          btnDashboard.textContent = 'Veja suas pontuações';
+          btnDashboard.classList.add('next-button');
+          document.getElementById('dashboardButtonContainer').appendChild(btnDashboard);
         }
-      }, 1000);
+      }, 300);
+      
     }
     
     mostrarPergunta();
